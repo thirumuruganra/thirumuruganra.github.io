@@ -197,11 +197,10 @@ main section:last-of-type {
 
 /* 2 columns for tablets and desktops */
 @media (min-width: 768px) {
-    .project-grid, .activity-grid {
+    .experience-grid,
+    .project-grid, 
+    .activity-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-    .experience-grid {
-        grid-template-columns: repeat(3, 1fr);
     }
 }
 
