@@ -97,8 +97,8 @@ export function PixelDesktop() {
     if (typeof window === "undefined") return { x: 40, y: 80 };
     const isMobile = window.innerWidth < 768;
     return isMobile
-      ? { x: 16, y: 60 }
-      : { x: window.innerWidth - 260, y: 80 };
+      ? { x: 16, y: 52 }
+      : { x: 24, y: 56 };
   }, []);
 
   return (
