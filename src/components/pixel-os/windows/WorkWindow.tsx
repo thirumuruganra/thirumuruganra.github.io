@@ -11,12 +11,12 @@ function RepoIcon({ name }: { name: string }) {
     const rounded = name.toLowerCase() !== "clg-clubs";
     return (
       <div
-        className={`w-10 h-10 overflow-hidden ${rounded ? "rounded-lg" : ""}`}
+        className={`w-10 h-10 overflow-hidden ${rounded ? "rounded-[8px]" : ""}`}
       >
         <img
           src={icon}
           alt=""
-          className={`w-full h-full block object-cover ${rounded ? "rounded-lg" : ""}`}
+          className={`w-full h-full block object-cover ${rounded ? "rounded-[8px]" : ""}`}
           style={{ imageRendering: "pixelated" }}
         />
       </div>
