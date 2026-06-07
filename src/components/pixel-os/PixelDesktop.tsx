@@ -102,7 +102,7 @@ export function PixelDesktop() {
   const stickyInitial = useMemo(() => {
     if (typeof window === "undefined") return { x: 40, y: 80 };
     const isMobile = window.innerWidth < 768;
-    return isMobile ? { x: 16, y: 60 } : { x: window.innerWidth - 260, y: 80 };
+    return isMobile ? { x: 16, y: 60 } : { x: 40, y: 80 };
   }, []);
 
   return (
