@@ -25,7 +25,9 @@ export function StickyNote({ initial }: { initial: { x: number; y: number } }) {
         ["--rot" as never]: "-6deg",
       }}
     >
-      <div className="text-[11px] opacity-70 mb-1" style={{ fontFamily: "var(--font-pixel)" }}>sticky.txt</div>
+      <div className="text-[11px] opacity-70 mb-1" style={{ fontFamily: "var(--font-pixel)" }}>
+        sticky.txt
+      </div>
       <div className="text-lg leading-tight font-semibold">Vanakkam!! ✨</div>
       <div className="mt-2 text-sm">— Thirumurugan ♡</div>
     </div>

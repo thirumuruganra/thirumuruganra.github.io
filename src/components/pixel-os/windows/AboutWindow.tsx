@@ -18,7 +18,10 @@ export function AboutWindow() {
       </p>
       <div className="flex flex-wrap gap-2">
         {tags.map((t) => (
-          <span key={t} className="pixel-border-2 pixel-shadow-sm px-2 py-1 text-sm bg-pixel-titlebar">
+          <span
+            key={t}
+            className="pixel-border-2 pixel-shadow-sm px-2 py-1 text-sm bg-pixel-titlebar"
+          >
             [{t}]
           </span>
         ))}
@@ -27,7 +30,10 @@ export function AboutWindow() {
         <h3 className="font-display text-xs mb-3">// TECHNICAL ARSENAL</h3>
         <ul className="space-y-2">
           {arsenal.map(([k, v]) => (
-            <li key={k} className="pixel-border-2 pixel-shadow-sm p-2 bg-pixel-window flex flex-col sm:flex-row sm:gap-3">
+            <li
+              key={k}
+              className="pixel-border-2 pixel-shadow-sm p-2 bg-pixel-window flex flex-col sm:flex-row sm:gap-3"
+            >
               <span className="font-display text-[10px] sm:w-32 text-pixel-accent">{k}</span>
               <span className="text-lg">{v}</span>
             </li>

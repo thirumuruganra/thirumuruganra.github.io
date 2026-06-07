@@ -1,0 +1,10 @@
+﻿2026-06-07T03:26:19.2216306Z ##[group]Run oven-sh/setup-bun@v2
+2026-06-07T03:26:19.2217992Z with:
+2026-06-07T03:26:19.2219230Z   bun-version: latest
+2026-06-07T03:26:19.2220598Z   no-cache: false
+2026-06-07T03:26:19.2238495Z   token: ***
+2026-06-07T03:26:19.2239788Z ##[endgroup]
+2026-06-07T03:26:19.5780052Z Downloading a new version of Bun: https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64.zip
+2026-06-07T03:26:19.8202393Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/ecf598e2-455d-4d3f-9ff5-860c39d49690.zip
+2026-06-07T03:26:20.6023641Z [command]/home/runner/.bun/bin/bun --revision
+2026-06-07T03:26:20.6066461Z 1.3.14+0d9b296af

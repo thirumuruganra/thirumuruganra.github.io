@@ -1,0 +1,72 @@
+﻿2026-06-07T03:26:18.6149619Z ##[group]Run actions/checkout@v4
+2026-06-07T03:26:18.6150990Z with:
+2026-06-07T03:26:18.6151978Z   repository: thirumuruganra/thirumuruganra.github.io
+2026-06-07T03:26:18.6163169Z   token: ***
+2026-06-07T03:26:18.6163961Z   ssh-strict: true
+2026-06-07T03:26:18.6164896Z   ssh-user: git
+2026-06-07T03:26:18.6165725Z   persist-credentials: true
+2026-06-07T03:26:18.6166664Z   clean: true
+2026-06-07T03:26:18.6167518Z   sparse-checkout-cone-mode: true
+2026-06-07T03:26:18.6168516Z   fetch-depth: 1
+2026-06-07T03:26:18.6169311Z   fetch-tags: false
+2026-06-07T03:26:18.6170139Z   show-progress: true
+2026-06-07T03:26:18.6170980Z   lfs: false
+2026-06-07T03:26:18.6171771Z   submodules: false
+2026-06-07T03:26:18.6172605Z   set-safe-directory: true
+2026-06-07T03:26:18.6173745Z ##[endgroup]
+2026-06-07T03:26:18.7334876Z Syncing repository: thirumuruganra/thirumuruganra.github.io
+2026-06-07T03:26:18.7337754Z ##[group]Getting Git version info
+2026-06-07T03:26:18.7339453Z Working directory is '/home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io'
+2026-06-07T03:26:18.7342277Z [command]/usr/bin/git version
+2026-06-07T03:26:18.7375733Z git version 2.54.0
+2026-06-07T03:26:18.7401255Z ##[endgroup]
+2026-06-07T03:26:18.7424557Z Temporarily overriding HOME='/home/runner/work/_temp/abccc484-99ea-4cb3-819b-128b5ac4a506' before making global git config changes
+2026-06-07T03:26:18.7428909Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-07T03:26:18.7433082Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io
+2026-06-07T03:26:18.7472219Z Deleting the contents of '/home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io'
+2026-06-07T03:26:18.7475659Z ##[group]Initializing the repository
+2026-06-07T03:26:18.7479720Z [command]/usr/bin/git init /home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io
+2026-06-07T03:26:18.7559579Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-06-07T03:26:18.7562456Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-06-07T03:26:18.7565008Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-06-07T03:26:18.7566463Z hint: call:
+2026-06-07T03:26:18.7567204Z hint:
+2026-06-07T03:26:18.7568116Z hint: 	git config --global init.defaultBranch <name>
+2026-06-07T03:26:18.7569281Z hint:
+2026-06-07T03:26:18.7570369Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-06-07T03:26:18.7572195Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-06-07T03:26:18.7573822Z hint:
+2026-06-07T03:26:18.7574806Z hint: 	git branch -m <name>
+2026-06-07T03:26:18.7575718Z hint:
+2026-06-07T03:26:18.7576912Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-06-07T03:26:18.7580318Z Initialized empty Git repository in /home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io/.git/
+2026-06-07T03:26:18.7585482Z [command]/usr/bin/git remote add origin https://github.com/thirumuruganra/thirumuruganra.github.io
+2026-06-07T03:26:18.7615486Z ##[endgroup]
+2026-06-07T03:26:18.7616988Z ##[group]Disabling automatic garbage collection
+2026-06-07T03:26:18.7618984Z [command]/usr/bin/git config --local gc.auto 0
+2026-06-07T03:26:18.7648809Z ##[endgroup]
+2026-06-07T03:26:18.7650163Z ##[group]Setting up auth
+2026-06-07T03:26:18.7655335Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-07T03:26:18.7687070Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-07T03:26:18.7988183Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-07T03:26:18.8019951Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-07T03:26:18.8249925Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-07T03:26:18.8279840Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-07T03:26:18.8514410Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-06-07T03:26:18.8550202Z ##[endgroup]
+2026-06-07T03:26:18.8552303Z ##[group]Fetching the repository
+2026-06-07T03:26:18.8561392Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ced298286dbd733e401047363fb9b52c03bb80d8:refs/remotes/origin/main
+2026-06-07T03:26:19.1255867Z From https://github.com/thirumuruganra/thirumuruganra.github.io
+2026-06-07T03:26:19.1258733Z  * [new ref]         ced298286dbd733e401047363fb9b52c03bb80d8 -> origin/main
+2026-06-07T03:26:19.1291885Z ##[endgroup]
+2026-06-07T03:26:19.1294294Z ##[group]Determining the checkout info
+2026-06-07T03:26:19.1296761Z ##[endgroup]
+2026-06-07T03:26:19.1298237Z [command]/usr/bin/git sparse-checkout disable
+2026-06-07T03:26:19.1347849Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-06-07T03:26:19.1373270Z ##[group]Checking out the ref
+2026-06-07T03:26:19.1376122Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-06-07T03:26:19.1638804Z Switched to a new branch 'main'
+2026-06-07T03:26:19.1641155Z branch 'main' set up to track 'origin/main'.
+2026-06-07T03:26:19.1653135Z ##[endgroup]
+2026-06-07T03:26:19.1690930Z [command]/usr/bin/git log -1 --format=%H
+2026-06-07T03:26:19.1716365Z ced298286dbd733e401047363fb9b52c03bb80d8

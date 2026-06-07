@@ -101,7 +101,6 @@ export function Backdrop() {
   );
 }
 
-
 function Cloud({ className = "" }: { className?: string }) {
   return (
     <div className={`absolute ${className}`}>
@@ -111,8 +110,7 @@ function Cloud({ className = "" }: { className?: string }) {
           width: 80,
           height: 24,
           background: "#ffffff",
-          boxShadow:
-            "0 -10px 0 0 #ffffff, 20px -16px 0 0 #ffffff, 40px -10px 0 0 #ffffff",
+          boxShadow: "0 -10px 0 0 #ffffff, 20px -16px 0 0 #ffffff, 40px -10px 0 0 #ffffff",
           borderRadius: 2,
           opacity: 0.9,
         }}
@@ -124,7 +122,7 @@ function Cloud({ className = "" }: { className?: string }) {
 function Star({ seed }: { seed: number }) {
   const hash1 = (n: number) => {
     let h = n;
-    h = (h ^ 61) ^ (h >>> 16);
+    h = h ^ 61 ^ (h >>> 16);
     h += h << 3;
     h ^= h >>> 4;
     h *= 0x27d4eb2d;

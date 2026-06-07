@@ -34,8 +34,6 @@ export function useDraggable(
     [margin, topInset, bottomInset, getSize],
   );
 
-
-
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
       if (opts?.disabled) return;
@@ -82,5 +80,9 @@ export function useDraggable(
     return () => window.removeEventListener("resize", onResize);
   }, [clamp]);
 
-  return { position, setPosition, dragHandleProps: { onPointerDown, style: { touchAction: "none" as const } } };
+  return {
+    position,
+    setPosition,
+    dragHandleProps: { onPointerDown, style: { touchAction: "none" as const } },
+  };
 }

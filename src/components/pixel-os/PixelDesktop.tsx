@@ -48,21 +48,27 @@ export function PixelDesktop() {
     localStorage.setItem("pixel-theme", theme);
   }, [theme]);
 
-  const focus = useCallback((id: WindowId) => {
-    setWindows((w) => {
-      if (w[id].z === zTop) return w;
-      return { ...w, [id]: { ...w[id], z: zTop + 1 } };
-    });
-    setZTop((z) => z + 1);
-  }, [zTop]);
+  const focus = useCallback(
+    (id: WindowId) => {
+      setWindows((w) => {
+        if (w[id].z === zTop) return w;
+        return { ...w, [id]: { ...w[id], z: zTop + 1 } };
+      });
+      setZTop((z) => z + 1);
+    },
+    [zTop],
+  );
 
-  const open = useCallback((id: WindowId) => {
-    setZTop((z) => z + 1);
-    setWindows((w) => ({
-      ...w,
-      [id]: { ...w[id], open: true, minimized: false, z: zTop + 1 },
-    }));
-  }, [zTop]);
+  const open = useCallback(
+    (id: WindowId) => {
+      setZTop((z) => z + 1);
+      setWindows((w) => ({
+        ...w,
+        [id]: { ...w[id], open: true, minimized: false, z: zTop + 1 },
+      }));
+    },
+    [zTop],
+  );
 
   const close = useCallback((id: WindowId) => {
     setWindows((w) => ({ ...w, [id]: { ...w[id], open: false } }));
@@ -96,15 +102,16 @@ export function PixelDesktop() {
   const stickyInitial = useMemo(() => {
     if (typeof window === "undefined") return { x: 40, y: 80 };
     const isMobile = window.innerWidth < 768;
-    return isMobile
-      ? { x: 16, y: 60 }
-      : { x: window.innerWidth - 260, y: 80 };
+    return isMobile ? { x: 16, y: 60 } : { x: window.innerWidth - 260, y: 80 };
   }, []);
 
   return (
     <div className="relative z-10 w-screen h-screen overflow-hidden text-foreground">
       <Backdrop />
-      <MenuBar theme={theme} toggleTheme={() => setTheme((t) => (t === "dark" ? "light" : "dark"))} />
+      <MenuBar
+        theme={theme}
+        toggleTheme={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+      />
       <StickyNote initial={stickyInitial} />
 
       <PixelWindow

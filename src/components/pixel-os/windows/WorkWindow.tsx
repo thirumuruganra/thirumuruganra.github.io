@@ -10,9 +10,7 @@ function RepoIcon({ name }: { name: string }) {
   if (icon.startsWith("/") || icon.startsWith("http") || icon.includes(".")) {
     const rounded = name.toLowerCase() !== "clg-clubs";
     return (
-      <div
-        className={`w-10 h-10 overflow-hidden ${rounded ? "rounded-[8px]" : ""}`}
-      >
+      <div className={`w-10 h-10 overflow-hidden ${rounded ? "rounded-[8px]" : ""}`}>
         <img
           src={icon}
           alt=""

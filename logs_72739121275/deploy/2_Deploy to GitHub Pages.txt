@@ -1,0 +1,20 @@
+﻿2026-06-07T03:26:37.9652012Z ##[group]Run actions/deploy-pages@v4
+2026-06-07T03:26:37.9653045Z with:
+2026-06-07T03:26:37.9658284Z   token: ***
+2026-06-07T03:26:37.9658808Z   timeout: 600000
+2026-06-07T03:26:37.9659311Z   error_count: 10
+2026-06-07T03:26:37.9659840Z   reporting_interval: 5000
+2026-06-07T03:26:37.9660415Z   artifact_name: github-pages
+2026-06-07T03:26:37.9661196Z   preview: false
+2026-06-07T03:26:37.9662131Z ##[endgroup]
+2026-06-07T03:26:38.4428764Z Fetching artifact metadata for "github-pages" in this workflow run
+2026-06-07T03:26:38.6443022Z Found 1 artifact(s)
+2026-06-07T03:26:38.6457121Z Creating Pages deployment with payload:
+2026-06-07T03:26:38.6458697Z {
+2026-06-07T03:26:38.6459462Z 	"artifact_id": 7460358068,
+2026-06-07T03:26:38.6460777Z 	"pages_build_version": "ced298286dbd733e401047363fb9b52c03bb80d8",
+2026-06-07T03:26:38.6596748Z 	"oidc_token": "***"
+2026-06-07T03:26:38.6597781Z }
+2026-06-07T03:26:39.0543896Z Created deployment for ced298286dbd733e401047363fb9b52c03bb80d8, ID: ced298286dbd733e401047363fb9b52c03bb80d8
+2026-06-07T03:26:44.0570888Z Getting Pages deployment status...
+2026-06-07T03:26:44.3008381Z Reported success!

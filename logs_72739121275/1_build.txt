@@ -1,0 +1,338 @@
+﻿2026-06-07T03:26:17.2097765Z Current runner version: '2.334.0'
+2026-06-07T03:26:17.2130760Z ##[group]Runner Image Provisioner
+2026-06-07T03:26:17.2132113Z Hosted Compute Agent
+2026-06-07T03:26:17.2132984Z Version: 20260520.533
+2026-06-07T03:26:17.2134010Z Commit: 189110e25284a9812c124fd27b339e2fb4f2f9db
+2026-06-07T03:26:17.2135419Z Build Date: 2026-05-20T17:44:04Z
+2026-06-07T03:26:17.2136442Z Worker ID: {8fec1333-a8b3-4f65-a236-1684b51b9a40}
+2026-06-07T03:26:17.2137705Z Azure Region: eastus
+2026-06-07T03:26:17.2138555Z ##[endgroup]
+2026-06-07T03:26:17.2141149Z ##[group]Operating System
+2026-06-07T03:26:17.2142159Z Ubuntu
+2026-06-07T03:26:17.2142942Z 24.04.4
+2026-06-07T03:26:17.2143805Z LTS
+2026-06-07T03:26:17.2144842Z ##[endgroup]
+2026-06-07T03:26:17.2145858Z ##[group]Runner Image
+2026-06-07T03:26:17.2146773Z Image: ubuntu-24.04
+2026-06-07T03:26:17.2147598Z Version: 20260525.161.1
+2026-06-07T03:26:17.2149763Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260525.161/images/ubuntu/Ubuntu2404-Readme.md
+2026-06-07T03:26:17.2152282Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260525.161
+2026-06-07T03:26:17.2153859Z ##[endgroup]
+2026-06-07T03:26:17.2155927Z ##[group]GITHUB_TOKEN Permissions
+2026-06-07T03:26:17.2158883Z Contents: read
+2026-06-07T03:26:17.2160199Z Metadata: read
+2026-06-07T03:26:17.2161055Z Pages: write
+2026-06-07T03:26:17.2161878Z ##[endgroup]
+2026-06-07T03:26:17.2165198Z Secret source: Actions
+2026-06-07T03:26:17.2166553Z Prepare workflow directory
+2026-06-07T03:26:17.2612986Z Prepare all required actions
+2026-06-07T03:26:17.2664824Z Getting action download info
+2026-06-07T03:26:17.7627687Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-06-07T03:26:17.8558211Z Download action repository 'oven-sh/setup-bun@v2' (SHA:0c5077e51419868618aeaa5fe8019c62421857d6)
+2026-06-07T03:26:17.9881188Z Download action repository 'actions/configure-pages@v5' (SHA:983d7736d9b0ae728b81ab479565c72886d7745b)
+2026-06-07T03:26:18.0983121Z Download action repository 'actions/upload-pages-artifact@v3' (SHA:56afc609e74202658d3ffba0e8f6dda462b719fa)
+2026-06-07T03:26:18.2796111Z Getting action download info
+2026-06-07T03:26:18.3803618Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-06-07T03:26:18.5323798Z Complete job name: build
+2026-06-07T03:26:18.6149656Z ##[group]Run actions/checkout@v4
+2026-06-07T03:26:18.6151000Z with:
+2026-06-07T03:26:18.6151985Z   repository: thirumuruganra/thirumuruganra.github.io
+2026-06-07T03:26:18.6163174Z   token: ***
+2026-06-07T03:26:18.6163972Z   ssh-strict: true
+2026-06-07T03:26:18.6164903Z   ssh-user: git
+2026-06-07T03:26:18.6165729Z   persist-credentials: true
+2026-06-07T03:26:18.6166679Z   clean: true
+2026-06-07T03:26:18.6167525Z   sparse-checkout-cone-mode: true
+2026-06-07T03:26:18.6168521Z   fetch-depth: 1
+2026-06-07T03:26:18.6169314Z   fetch-tags: false
+2026-06-07T03:26:18.6170144Z   show-progress: true
+2026-06-07T03:26:18.6170984Z   lfs: false
+2026-06-07T03:26:18.6171775Z   submodules: false
+2026-06-07T03:26:18.6172608Z   set-safe-directory: true
+2026-06-07T03:26:18.6173756Z ##[endgroup]
+2026-06-07T03:26:18.7334941Z Syncing repository: thirumuruganra/thirumuruganra.github.io
+2026-06-07T03:26:18.7337767Z ##[group]Getting Git version info
+2026-06-07T03:26:18.7339551Z Working directory is '/home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io'
+2026-06-07T03:26:18.7342290Z [command]/usr/bin/git version
+2026-06-07T03:26:18.7375766Z git version 2.54.0
+2026-06-07T03:26:18.7401293Z ##[endgroup]
+2026-06-07T03:26:18.7424592Z Temporarily overriding HOME='/home/runner/work/_temp/abccc484-99ea-4cb3-819b-128b5ac4a506' before making global git config changes
+2026-06-07T03:26:18.7428938Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-07T03:26:18.7433105Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io
+2026-06-07T03:26:18.7472254Z Deleting the contents of '/home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io'
+2026-06-07T03:26:18.7475671Z ##[group]Initializing the repository
+2026-06-07T03:26:18.7479732Z [command]/usr/bin/git init /home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io
+2026-06-07T03:26:18.7559643Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-06-07T03:26:18.7562469Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-06-07T03:26:18.7565019Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-06-07T03:26:18.7566469Z hint: call:
+2026-06-07T03:26:18.7567208Z hint:
+2026-06-07T03:26:18.7568121Z hint: 	git config --global init.defaultBranch <name>
+2026-06-07T03:26:18.7569286Z hint:
+2026-06-07T03:26:18.7570375Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-06-07T03:26:18.7572200Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-06-07T03:26:18.7573832Z hint:
+2026-06-07T03:26:18.7574823Z hint: 	git branch -m <name>
+2026-06-07T03:26:18.7575724Z hint:
+2026-06-07T03:26:18.7576918Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-06-07T03:26:18.7580347Z Initialized empty Git repository in /home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io/.git/
+2026-06-07T03:26:18.7585509Z [command]/usr/bin/git remote add origin https://github.com/thirumuruganra/thirumuruganra.github.io
+2026-06-07T03:26:18.7615503Z ##[endgroup]
+2026-06-07T03:26:18.7617004Z ##[group]Disabling automatic garbage collection
+2026-06-07T03:26:18.7618997Z [command]/usr/bin/git config --local gc.auto 0
+2026-06-07T03:26:18.7648835Z ##[endgroup]
+2026-06-07T03:26:18.7650169Z ##[group]Setting up auth
+2026-06-07T03:26:18.7655346Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-07T03:26:18.7687102Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-07T03:26:18.7988218Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-07T03:26:18.8020351Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-07T03:26:18.8249975Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-07T03:26:18.8279869Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-07T03:26:18.8514455Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-06-07T03:26:18.8550230Z ##[endgroup]
+2026-06-07T03:26:18.8552318Z ##[group]Fetching the repository
+2026-06-07T03:26:18.8561426Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ced298286dbd733e401047363fb9b52c03bb80d8:refs/remotes/origin/main
+2026-06-07T03:26:19.1255964Z From https://github.com/thirumuruganra/thirumuruganra.github.io
+2026-06-07T03:26:19.1258750Z  * [new ref]         ced298286dbd733e401047363fb9b52c03bb80d8 -> origin/main
+2026-06-07T03:26:19.1291975Z ##[endgroup]
+2026-06-07T03:26:19.1294304Z ##[group]Determining the checkout info
+2026-06-07T03:26:19.1296772Z ##[endgroup]
+2026-06-07T03:26:19.1298248Z [command]/usr/bin/git sparse-checkout disable
+2026-06-07T03:26:19.1347886Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-06-07T03:26:19.1373299Z ##[group]Checking out the ref
+2026-06-07T03:26:19.1376153Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-06-07T03:26:19.1638889Z Switched to a new branch 'main'
+2026-06-07T03:26:19.1641174Z branch 'main' set up to track 'origin/main'.
+2026-06-07T03:26:19.1653242Z ##[endgroup]
+2026-06-07T03:26:19.1690974Z [command]/usr/bin/git log -1 --format=%H
+2026-06-07T03:26:19.1716399Z ced298286dbd733e401047363fb9b52c03bb80d8
+2026-06-07T03:26:19.2216341Z ##[group]Run oven-sh/setup-bun@v2
+2026-06-07T03:26:19.2218015Z with:
+2026-06-07T03:26:19.2219244Z   bun-version: latest
+2026-06-07T03:26:19.2220614Z   no-cache: false
+2026-06-07T03:26:19.2238526Z   token: ***
+2026-06-07T03:26:19.2239810Z ##[endgroup]
+2026-06-07T03:26:19.5780145Z Downloading a new version of Bun: https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64.zip
+2026-06-07T03:26:19.8202487Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/ecf598e2-455d-4d3f-9ff5-860c39d49690.zip
+2026-06-07T03:26:20.6023713Z [command]/home/runner/.bun/bin/bun --revision
+2026-06-07T03:26:20.6066488Z 1.3.14+0d9b296af
+2026-06-07T03:26:20.6255562Z ##[group]Run actions/configure-pages@v5
+2026-06-07T03:26:20.6256024Z with:
+2026-06-07T03:26:20.6259548Z   token: ***
+2026-06-07T03:26:20.6259914Z   enablement: false
+2026-06-07T03:26:20.6260304Z ##[endgroup]
+2026-06-07T03:26:20.9585280Z ##[group]Run bun install --frozen-lockfile
+2026-06-07T03:26:20.9585771Z [36;1mbun install --frozen-lockfile[0m
+2026-06-07T03:26:20.9618325Z shell: /usr/bin/bash -e {0}
+2026-06-07T03:26:20.9618666Z env:
+2026-06-07T03:26:20.9618922Z   GITHUB_PAGES: true
+2026-06-07T03:26:20.9619203Z ##[endgroup]
+2026-06-07T03:26:20.9716794Z bun install v1.3.14 (0d9b296a)
+2026-06-07T03:26:23.1030720Z 
+2026-06-07T03:26:23.1031244Z + @eslint/js@9.39.4
+2026-06-07T03:26:23.1031752Z + @lovable.dev/vite-tanstack-config@2.1.1
+2026-06-07T03:26:23.1032486Z + @types/node@22.19.17
+2026-06-07T03:26:23.1032872Z + @types/react@19.2.14
+2026-06-07T03:26:23.1033264Z + @types/react-dom@19.2.3
+2026-06-07T03:26:23.1033622Z + @vitejs/plugin-react@5.2.0
+2026-06-07T03:26:23.1033963Z + eslint@9.39.4
+2026-06-07T03:26:23.1034527Z + eslint-config-prettier@10.1.8
+2026-06-07T03:26:23.1034963Z + eslint-plugin-prettier@5.5.5
+2026-06-07T03:26:23.1045344Z + eslint-plugin-react-hooks@5.2.0
+2026-06-07T03:26:23.1046016Z + eslint-plugin-react-refresh@0.4.26
+2026-06-07T03:26:23.1046476Z + globals@15.15.0
+2026-06-07T03:26:23.1046862Z + nitro@3.0.260429-beta
+2026-06-07T03:26:23.1047215Z + prettier@3.8.3
+2026-06-07T03:26:23.1047566Z + typescript@5.9.3
+2026-06-07T03:26:23.1047920Z + typescript-eslint@8.59.0
+2026-06-07T03:26:23.1048206Z + vite@7.3.2
+2026-06-07T03:26:23.1048426Z + @hookform/resolvers@5.2.2
+2026-06-07T03:26:23.1048697Z + @radix-ui/react-accordion@1.2.12
+2026-06-07T03:26:23.1048985Z + @radix-ui/react-alert-dialog@1.1.15
+2026-06-07T03:26:23.1049278Z + @radix-ui/react-aspect-ratio@1.1.8
+2026-06-07T03:26:23.1049592Z + @radix-ui/react-avatar@1.1.11
+2026-06-07T03:26:23.1049873Z + @radix-ui/react-checkbox@1.3.3
+2026-06-07T03:26:23.1050188Z + @radix-ui/react-collapsible@1.1.12
+2026-06-07T03:26:23.1050477Z + @radix-ui/react-context-menu@2.2.16
+2026-06-07T03:26:23.1050760Z + @radix-ui/react-dialog@1.1.15
+2026-06-07T03:26:23.1051029Z + @radix-ui/react-dropdown-menu@2.1.16
+2026-06-07T03:26:23.1051346Z + @radix-ui/react-hover-card@1.1.15
+2026-06-07T03:26:23.1051637Z + @radix-ui/react-label@2.1.8
+2026-06-07T03:26:23.1051911Z + @radix-ui/react-menubar@1.1.16
+2026-06-07T03:26:23.1052195Z + @radix-ui/react-navigation-menu@1.2.14
+2026-06-07T03:26:23.1052501Z + @radix-ui/react-popover@1.1.15
+2026-06-07T03:26:23.1052776Z + @radix-ui/react-progress@1.1.8
+2026-06-07T03:26:23.1053046Z + @radix-ui/react-radio-group@1.3.8
+2026-06-07T03:26:23.1053331Z + @radix-ui/react-scroll-area@1.2.10
+2026-06-07T03:26:23.1053609Z + @radix-ui/react-select@2.2.6
+2026-06-07T03:26:23.1053877Z + @radix-ui/react-separator@1.1.8
+2026-06-07T03:26:23.1054506Z + @radix-ui/react-slider@1.3.6
+2026-06-07T03:26:23.1054886Z + @radix-ui/react-slot@1.2.4
+2026-06-07T03:26:23.1055160Z + @radix-ui/react-switch@1.2.6
+2026-06-07T03:26:23.1055440Z + @radix-ui/react-tabs@1.1.13
+2026-06-07T03:26:23.1055700Z + @radix-ui/react-toggle@1.1.10
+2026-06-07T03:26:23.1055981Z + @radix-ui/react-toggle-group@1.1.11
+2026-06-07T03:26:23.1056273Z + @radix-ui/react-tooltip@1.2.8
+2026-06-07T03:26:23.1056945Z + @tailwindcss/vite@4.2.4
+2026-06-07T03:26:23.1057200Z + @tanstack/react-query@5.100.1
+2026-06-07T03:26:23.1057466Z + @tanstack/react-router@1.168.25
+2026-06-07T03:26:23.1057740Z + @tanstack/react-start@1.167.50
+2026-06-07T03:26:23.1058011Z + @tanstack/router-plugin@1.167.28
+2026-06-07T03:26:23.1058292Z + class-variance-authority@0.7.1
+2026-06-07T03:26:23.1058546Z + clsx@2.1.1
+2026-06-07T03:26:23.1058754Z + cmdk@1.1.1
+2026-06-07T03:26:23.1058956Z + date-fns@4.1.0
+2026-06-07T03:26:23.1059190Z + embla-carousel-react@8.6.0
+2026-06-07T03:26:23.1059443Z + input-otp@1.4.2
+2026-06-07T03:26:23.1059669Z + lucide-react@0.575.0
+2026-06-07T03:26:23.1059912Z + pixelarticons@2.1.2
+2026-06-07T03:26:23.1060149Z + react@19.2.5
+2026-06-07T03:26:23.1060374Z + react-day-picker@9.14.0
+2026-06-07T03:26:23.1060620Z + react-dom@19.2.5
+2026-06-07T03:26:23.1060847Z + react-hook-form@7.73.1
+2026-06-07T03:26:23.1061093Z + react-markdown@10.1.0
+2026-06-07T03:26:23.1061348Z + react-resizable-panels@4.10.0
+2026-06-07T03:26:23.1061798Z + recharts@2.15.4
+2026-06-07T03:26:23.1062024Z + remark-gfm@4.0.1
+2026-06-07T03:26:23.1062298Z + sonner@2.0.7
+2026-06-07T03:26:23.1062541Z + tailwind-merge@3.5.0
+2026-06-07T03:26:23.1062777Z + tailwindcss@4.2.4
+2026-06-07T03:26:23.1063007Z + tw-animate-css@1.4.0
+2026-06-07T03:26:23.1063228Z + vaul@1.1.2
+2026-06-07T03:26:23.1063452Z + vite-tsconfig-paths@6.1.1
+2026-06-07T03:26:23.1063707Z + zod@3.25.76
+2026-06-07T03:26:23.1063830Z 
+2026-06-07T03:26:23.1063946Z 582 packages installed [2.13s]
+2026-06-07T03:26:23.1147372Z ##[group]Run bun run build
+2026-06-07T03:26:23.1147690Z [36;1mbun run build[0m
+2026-06-07T03:26:23.1175790Z shell: /usr/bin/bash -e {0}
+2026-06-07T03:26:23.1176070Z env:
+2026-06-07T03:26:23.1176287Z   GITHUB_PAGES: true
+2026-06-07T03:26:23.1176526Z ##[endgroup]
+2026-06-07T03:26:23.1244232Z $ vite build
+2026-06-07T03:26:24.0572817Z [@lovable.dev/vite-tanstack-config] No Lovable context detected — skipping nitro deploy plugin. Pass `nitro: true` (or `nitro: { ... }`) to force-enable.
+2026-06-07T03:26:24.2459837Z [@lovable.dev/vite-tanstack-config] No Lovable context detected — skipping nitro deploy plugin. Pass `nitro: true` (or `nitro: { ... }`) to force-enable.
+2026-06-07T03:26:24.2982672Z [@lovable.dev/vite-tanstack-config] No Lovable context detected — skipping nitro deploy plugin. Pass `nitro: true` (or `nitro: { ... }`) to force-enable.
+2026-06-07T03:26:24.3366102Z [36mvite v7.3.2 [32mbuilding client environment for production...[36m[39m
+2026-06-07T03:26:24.3928786Z transforming...
+2026-06-07T03:26:26.7684705Z [32m✓[39m 490 modules transformed.
+2026-06-07T03:26:26.9662252Z rendering chunks...
+2026-06-07T03:26:27.1018626Z computing gzip size...
+2026-06-07T03:26:27.1232731Z [2mdist/client/[22m[2massets/[22m[35mstyles-CmXpCCO8.css         [39m[1m[2m 79.73 kB[22m[1m[22m[2m │ gzip:  14.06 kB[22m
+2026-06-07T03:26:27.1234751Z [2mdist/client/[22m[2massets/[22m[36mprojects._repo-Bc7EHyS3.js  [39m[1m[2m  0.87 kB[22m[1m[22m[2m │ gzip:   0.53 kB[22m
+2026-06-07T03:26:27.1236741Z [2mdist/client/[22m[2massets/[22m[36mindex-Cuk_9gq9.js           [39m[1m[2m 23.72 kB[22m[1m[22m[2m │ gzip:   7.50 kB[22m
+2026-06-07T03:26:27.1238589Z [2mdist/client/[22m[2massets/[22m[36mProjectDetail-B9yq08tM.js   [39m[1m[2m162.29 kB[22m[1m[22m[2m │ gzip:  49.54 kB[22m
+2026-06-07T03:26:27.1240185Z [2mdist/client/[22m[2massets/[22m[36mindex-B8Arrmkf.js           [39m[1m[2m350.93 kB[22m[1m[22m[2m │ gzip: 111.18 kB[22m
+2026-06-07T03:26:27.1241443Z [32m✓ built in 2.75s[39m
+2026-06-07T03:26:27.1242337Z [36mvite v7.3.2 [32mbuilding ssr environment for production...[36m[39m
+2026-06-07T03:26:27.1291508Z transforming...
+2026-06-07T03:26:27.6517427Z [33m"createRequestHandler", "defineHandlerCallback", "transformPipeableStreamWithRouter" and "transformReadableStreamWithRouter" are imported from external module "@tanstack/router-core/ssr/server" but never used in "node_modules/@tanstack/start-server-core/dist/esm/index.js".[39m
+2026-06-07T03:26:27.6519579Z [32m✓[39m 69 modules transformed.
+2026-06-07T03:26:27.6585905Z [33m"RawStream" is imported from external module "@tanstack/router-core" but never used in "node_modules/@tanstack/start-client-core/dist/esm/index.js".[39m
+2026-06-07T03:26:27.6615757Z [33m"hydrate" and "json" are imported from external module "@tanstack/router-core/ssr/client" but never used in "node_modules/@tanstack/start-client-core/dist/esm/index.js".[39m
+2026-06-07T03:26:27.6843793Z rendering chunks...
+2026-06-07T03:26:27.7030890Z [2mdist/server/[22m[2massets/[22m[36m__23tanstack-start-plugin-adapters-Cwee5PKy.js  [39m[1m[2m 0.14 kB[22m[1m[22m
+2026-06-07T03:26:27.7032667Z [2mdist/server/[22m[2massets/[22m[36m_tanstack-start-manifest_v-DYyp9WDT.js          [39m[1m[2m 0.81 kB[22m[1m[22m
+2026-06-07T03:26:27.7045795Z [2mdist/server/[22m[2massets/[22m[36mprojects._repo-qCI150Xu.js                      [39m[1m[2m 1.64 kB[22m[1m[22m
+2026-06-07T03:26:27.7055692Z [2mdist/server/[22m[2massets/[22m[36mstart-D4mdwD77.js                               [39m[1m[2m 1.98 kB[22m[1m[22m
+2026-06-07T03:26:27.7074217Z [2mdist/server/[22m[36mserver.js                                              [39m[1m[2m 3.32 kB[22m[1m[22m
+2026-06-07T03:26:27.7075618Z [2mdist/server/[22m[2massets/[22m[36mProjectDetail-BIWEADrb.js                       [39m[1m[2m 6.83 kB[22m[1m[22m
+2026-06-07T03:26:27.7077566Z [2mdist/server/[22m[2massets/[22m[36mrouter-Bo27yEh8.js                              [39m[1m[2m 7.65 kB[22m[1m[22m
+2026-06-07T03:26:27.7079031Z [2mdist/server/[22m[2massets/[22m[36mindex-CTsOeaIo.js                               [39m[1m[2m32.63 kB[22m[1m[22m
+2026-06-07T03:26:27.7080458Z [2mdist/server/[22m[2massets/[22m[36mserver-Btc0Z74U.js                              [39m[1m[2m38.80 kB[22m[1m[22m
+2026-06-07T03:26:27.7081567Z [32m✓ built in 579ms[39m
+2026-06-07T03:26:27.8497661Z ##[group]Run actions/upload-pages-artifact@v3
+2026-06-07T03:26:27.8498175Z with:
+2026-06-07T03:26:27.8498516Z   path: ./dist
+2026-06-07T03:26:27.8498854Z   name: github-pages
+2026-06-07T03:26:27.8499212Z   retention-days: 1
+2026-06-07T03:26:27.8499547Z env:
+2026-06-07T03:26:27.8499852Z   GITHUB_PAGES: true
+2026-06-07T03:26:27.8500196Z ##[endgroup]
+2026-06-07T03:26:27.8596521Z ##[group]Run echo ::group::Archive artifact
+2026-06-07T03:26:27.8596886Z [36;1mecho ::group::Archive artifact[0m
+2026-06-07T03:26:27.8597171Z [36;1mtar \[0m
+2026-06-07T03:26:27.8597436Z [36;1m  --dereference --hard-dereference \[0m
+2026-06-07T03:26:27.8597779Z [36;1m  --directory "$INPUT_PATH" \[0m
+2026-06-07T03:26:27.8598104Z [36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \[0m
+2026-06-07T03:26:27.8598401Z [36;1m  --exclude=.git \[0m
+2026-06-07T03:26:27.8598664Z [36;1m  --exclude=.github \[0m
+2026-06-07T03:26:27.8598917Z [36;1m  .[0m
+2026-06-07T03:26:27.8599140Z [36;1mecho ::endgroup::[0m
+2026-06-07T03:26:27.8628769Z shell: /usr/bin/sh -e {0}
+2026-06-07T03:26:27.8629039Z env:
+2026-06-07T03:26:27.8629255Z   GITHUB_PAGES: true
+2026-06-07T03:26:27.8629505Z   INPUT_PATH: ./dist
+2026-06-07T03:26:27.8629729Z ##[endgroup]
+2026-06-07T03:26:27.8701850Z ##[group]Archive artifact
+2026-06-07T03:26:27.8718708Z ./
+2026-06-07T03:26:27.8719144Z ./client/
+2026-06-07T03:26:27.8719617Z ./client/project-icons/
+2026-06-07T03:26:27.8720045Z ./client/project-icons/note-it.png
+2026-06-07T03:26:27.8726213Z ./client/project-icons/clg-clubs.png
+2026-06-07T03:26:27.8733744Z ./client/project-icons/paisa.png
+2026-06-07T03:26:27.8734716Z ./client/project-icons/PACMAN-using-C-and-RAYLIB.png
+2026-06-07T03:26:27.8736688Z ./client/project-icons/PhishTank.png
+2026-06-07T03:26:27.8743876Z ./client/project-icons/truetone.png
+2026-06-07T03:26:27.8752128Z ./client/og-image.png
+2026-06-07T03:26:27.8766960Z ./client/Thirumurugan_RA_CV.pdf
+2026-06-07T03:26:27.8767528Z ./client/favicon.ico
+2026-06-07T03:26:27.8784002Z ./client/favicon.png
+2026-06-07T03:26:27.8784848Z ./client/assets/
+2026-06-07T03:26:27.8785230Z ./client/assets/styles-CmXpCCO8.css
+2026-06-07T03:26:27.8785940Z ./client/assets/index-B8Arrmkf.js
+2026-06-07T03:26:27.8786408Z ./client/assets/projects._repo-Bc7EHyS3.js
+2026-06-07T03:26:27.8786904Z ./client/assets/ProjectDetail-B9yq08tM.js
+2026-06-07T03:26:27.8787380Z ./client/assets/index-Cuk_9gq9.js
+2026-06-07T03:26:27.8787773Z ./server/
+2026-06-07T03:26:27.8788076Z ./server/server.js
+2026-06-07T03:26:27.8788407Z ./server/assets/
+2026-06-07T03:26:27.8788918Z ./server/assets/__23tanstack-start-plugin-adapters-Cwee5PKy.js
+2026-06-07T03:26:27.8789553Z ./server/assets/index-CTsOeaIo.js
+2026-06-07T03:26:27.8790000Z ./server/assets/start-D4mdwD77.js
+2026-06-07T03:26:27.8790460Z ./server/assets/ProjectDetail-BIWEADrb.js
+2026-06-07T03:26:27.8790969Z ./server/assets/projects._repo-qCI150Xu.js
+2026-06-07T03:26:27.8791464Z ./server/assets/server-Btc0Z74U.js
+2026-06-07T03:26:27.8791902Z ./server/assets/router-Bo27yEh8.js
+2026-06-07T03:26:27.8792426Z ./server/assets/_tanstack-start-manifest_v-DYyp9WDT.js
+2026-06-07T03:26:27.8793283Z ##[endgroup]
+2026-06-07T03:26:27.8889376Z ##[group]Run actions/upload-artifact@v4
+2026-06-07T03:26:27.8889842Z with:
+2026-06-07T03:26:27.8890162Z   name: github-pages
+2026-06-07T03:26:27.8890572Z   path: /home/runner/work/_temp/artifact.tar
+2026-06-07T03:26:27.8891058Z   retention-days: 1
+2026-06-07T03:26:27.8891419Z   if-no-files-found: error
+2026-06-07T03:26:27.8891814Z   compression-level: 6
+2026-06-07T03:26:27.8892174Z   overwrite: false
+2026-06-07T03:26:27.8892535Z   include-hidden-files: false
+2026-06-07T03:26:27.8892929Z env:
+2026-06-07T03:26:27.8893229Z   GITHUB_PAGES: true
+2026-06-07T03:26:27.8893570Z ##[endgroup]
+2026-06-07T03:26:28.1275019Z With the provided path, there will be 1 file uploaded
+2026-06-07T03:26:28.1275901Z Artifact name is valid!
+2026-06-07T03:26:28.1276314Z Root directory input is valid!
+2026-06-07T03:26:28.2459462Z Beginning upload of artifact content to blob storage
+2026-06-07T03:26:28.6853773Z Uploaded bytes 5669690
+2026-06-07T03:26:28.7013397Z Finished uploading artifact content to blob storage!
+2026-06-07T03:26:28.7016293Z SHA256 digest of uploaded artifact zip is 31e0f3de2d0c0b39fa2c1255017769e10067fad3b3171ce97ddf5ad061f8b569
+2026-06-07T03:26:28.7017981Z Finalizing artifact upload
+2026-06-07T03:26:28.8309142Z Artifact github-pages.zip successfully finalized. Artifact ID 7460358068
+2026-06-07T03:26:28.8310309Z Artifact github-pages has been successfully uploaded! Final size is 5669690 bytes. Artifact ID is 7460358068
+2026-06-07T03:26:28.8317327Z Artifact download URL: https://github.com/thirumuruganra/thirumuruganra.github.io/actions/runs/27081483963/artifacts/7460358068
+2026-06-07T03:26:28.8506838Z Post job cleanup.
+2026-06-07T03:26:29.0263916Z Post job cleanup.
+2026-06-07T03:26:29.1229597Z [command]/usr/bin/git version
+2026-06-07T03:26:29.1269953Z git version 2.54.0
+2026-06-07T03:26:29.1311558Z Temporarily overriding HOME='/home/runner/work/_temp/dafb5332-dd8c-4478-96db-71b005b82ed3' before making global git config changes
+2026-06-07T03:26:29.1312937Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-07T03:26:29.1326163Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/thirumuruganra.github.io/thirumuruganra.github.io
+2026-06-07T03:26:29.1361889Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-07T03:26:29.1397109Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-07T03:26:29.1645104Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-07T03:26:29.1667145Z http.https://github.com/.extraheader
+2026-06-07T03:26:29.1679257Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-06-07T03:26:29.1711955Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-07T03:26:29.1943055Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-07T03:26:29.1975477Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-07T03:26:29.2327700Z Cleaning up orphan processes
+2026-06-07T03:26:29.2606717Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/configure-pages@v5, actions/upload-artifact@v4. Actions will be forced to run with Node.js 24 by default starting June 16th, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

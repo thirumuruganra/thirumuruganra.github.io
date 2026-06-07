@@ -11,7 +11,6 @@ import {
 
 type Props = { theme: "light" | "dark"; toggleTheme: () => void };
 
-
 export function MenuBar({ theme, toggleTheme }: Props) {
   const [now, setNow] = useState<Date | null>(null);
   const [battery, setBattery] = useState(0.98);
@@ -32,18 +31,25 @@ export function MenuBar({ theme, toggleTheme }: Props) {
     if (!nav.getBattery) return;
     let battery: BatteryManager | null = null;
     const update = () => battery && setBattery(battery.level);
-    nav.getBattery().then((b) => {
-      battery = b;
-      update();
-      b.addEventListener("levelchange", update);
-    }).catch(() => {});
+    nav
+      .getBattery()
+      .then((b) => {
+        battery = b;
+        update();
+        b.addEventListener("levelchange", update);
+      })
+      .catch(() => {});
     return () => {
       battery?.removeEventListener("levelchange", update);
     };
   }, []);
 
-  const time = now ? now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false }) : "";
-  const date = now ? now.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" }) : "";
+  const time = now
+    ? now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false })
+    : "";
+  const date = now
+    ? now.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" })
+    : "";
 
   return (
     <div className="fixed top-0 left-0 right-0 z-[9999] h-9 sm:h-10 px-2 sm:px-4 flex items-center justify-between gap-2 bg-pixel-dock pixel-border-2 border-t-0 border-x-0 anim-fade-in">
@@ -71,7 +77,11 @@ export function MenuBar({ theme, toggleTheme }: Props) {
           aria-label="Toggle theme"
           className="p-0.5 hover:bg-pixel-titlebar shrink-0 press-tap transition-colors"
         >
-          {theme === "dark" ? <SunIcon className="w-4 h-4 sm:w-5 sm:h-5" /> : <MoonIcon className="w-4 h-4 sm:w-5 sm:h-5" />}
+          {theme === "dark" ? (
+            <SunIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+          ) : (
+            <MoonIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+          )}
         </button>
       </div>
     </div>

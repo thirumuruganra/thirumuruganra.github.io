@@ -71,7 +71,6 @@ export function PixelWindow({
   const left = isMobile ? (vw - winW) / 2 : position.x;
   const top = isMobile ? 56 : position.y;
 
-
   const style: React.CSSProperties = state.maximized
     ? {
         left: 8,
@@ -124,7 +123,12 @@ export function PixelWindow({
         </div>
         <div className="w-14" />
       </div>
-      <div className="flex-1 overflow-auto overscroll-contain p-4 sm:p-6 anim-fade-up" style={{ animationDelay: "80ms" }}>{children}</div>
+      <div
+        className="flex-1 overflow-auto overscroll-contain p-4 sm:p-6 anim-fade-up"
+        style={{ animationDelay: "80ms" }}
+      >
+        {children}
+      </div>
     </div>
   );
 }

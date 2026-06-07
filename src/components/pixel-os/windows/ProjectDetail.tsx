@@ -110,10 +110,20 @@ export function ProjectDetail({ repo, onBack }: Props) {
               }}
               components={{
                 a: (props) => (
-                  <a {...props} target="_blank" rel="noreferrer" className="text-pixel-accent underline" />
+                  <a
+                    {...props}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-pixel-accent underline"
+                  />
                 ),
                 img: (props) => (
-                  <img {...props} className="max-w-full inline-block my-2" loading="lazy" alt={props.alt ?? ""} />
+                  <img
+                    {...props}
+                    className="max-w-full inline-block my-2"
+                    loading="lazy"
+                    alt={props.alt ?? ""}
+                  />
                 ),
               }}
             >

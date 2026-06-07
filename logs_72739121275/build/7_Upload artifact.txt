@@ -1,0 +1,78 @@
+﻿2026-06-07T03:26:27.8497648Z ##[group]Run actions/upload-pages-artifact@v3
+2026-06-07T03:26:27.8498171Z with:
+2026-06-07T03:26:27.8498512Z   path: ./dist
+2026-06-07T03:26:27.8498851Z   name: github-pages
+2026-06-07T03:26:27.8499209Z   retention-days: 1
+2026-06-07T03:26:27.8499544Z env:
+2026-06-07T03:26:27.8499849Z   GITHUB_PAGES: true
+2026-06-07T03:26:27.8500193Z ##[endgroup]
+2026-06-07T03:26:27.8596509Z ##[group]Run echo ::group::Archive artifact
+2026-06-07T03:26:27.8596883Z [36;1mecho ::group::Archive artifact[0m
+2026-06-07T03:26:27.8597168Z [36;1mtar \[0m
+2026-06-07T03:26:27.8597433Z [36;1m  --dereference --hard-dereference \[0m
+2026-06-07T03:26:27.8597776Z [36;1m  --directory "$INPUT_PATH" \[0m
+2026-06-07T03:26:27.8598101Z [36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \[0m
+2026-06-07T03:26:27.8598399Z [36;1m  --exclude=.git \[0m
+2026-06-07T03:26:27.8598661Z [36;1m  --exclude=.github \[0m
+2026-06-07T03:26:27.8598915Z [36;1m  .[0m
+2026-06-07T03:26:27.8599138Z [36;1mecho ::endgroup::[0m
+2026-06-07T03:26:27.8628725Z shell: /usr/bin/sh -e {0}
+2026-06-07T03:26:27.8629037Z env:
+2026-06-07T03:26:27.8629253Z   GITHUB_PAGES: true
+2026-06-07T03:26:27.8629503Z   INPUT_PATH: ./dist
+2026-06-07T03:26:27.8629726Z ##[endgroup]
+2026-06-07T03:26:27.8701838Z ##[group]Archive artifact
+2026-06-07T03:26:27.8718689Z ./
+2026-06-07T03:26:27.8719135Z ./client/
+2026-06-07T03:26:27.8719612Z ./client/project-icons/
+2026-06-07T03:26:27.8720039Z ./client/project-icons/note-it.png
+2026-06-07T03:26:27.8726203Z ./client/project-icons/clg-clubs.png
+2026-06-07T03:26:27.8733736Z ./client/project-icons/paisa.png
+2026-06-07T03:26:27.8734710Z ./client/project-icons/PACMAN-using-C-and-RAYLIB.png
+2026-06-07T03:26:27.8736680Z ./client/project-icons/PhishTank.png
+2026-06-07T03:26:27.8743869Z ./client/project-icons/truetone.png
+2026-06-07T03:26:27.8752117Z ./client/og-image.png
+2026-06-07T03:26:27.8766948Z ./client/Thirumurugan_RA_CV.pdf
+2026-06-07T03:26:27.8767524Z ./client/favicon.ico
+2026-06-07T03:26:27.8783991Z ./client/favicon.png
+2026-06-07T03:26:27.8784821Z ./client/assets/
+2026-06-07T03:26:27.8785226Z ./client/assets/styles-CmXpCCO8.css
+2026-06-07T03:26:27.8785936Z ./client/assets/index-B8Arrmkf.js
+2026-06-07T03:26:27.8786405Z ./client/assets/projects._repo-Bc7EHyS3.js
+2026-06-07T03:26:27.8786900Z ./client/assets/ProjectDetail-B9yq08tM.js
+2026-06-07T03:26:27.8787377Z ./client/assets/index-Cuk_9gq9.js
+2026-06-07T03:26:27.8787770Z ./server/
+2026-06-07T03:26:27.8788072Z ./server/server.js
+2026-06-07T03:26:27.8788402Z ./server/assets/
+2026-06-07T03:26:27.8788914Z ./server/assets/__23tanstack-start-plugin-adapters-Cwee5PKy.js
+2026-06-07T03:26:27.8789550Z ./server/assets/index-CTsOeaIo.js
+2026-06-07T03:26:27.8789998Z ./server/assets/start-D4mdwD77.js
+2026-06-07T03:26:27.8790457Z ./server/assets/ProjectDetail-BIWEADrb.js
+2026-06-07T03:26:27.8790966Z ./server/assets/projects._repo-qCI150Xu.js
+2026-06-07T03:26:27.8791461Z ./server/assets/server-Btc0Z74U.js
+2026-06-07T03:26:27.8791899Z ./server/assets/router-Bo27yEh8.js
+2026-06-07T03:26:27.8792414Z ./server/assets/_tanstack-start-manifest_v-DYyp9WDT.js
+2026-06-07T03:26:27.8793279Z ##[endgroup]
+2026-06-07T03:26:27.8889365Z ##[group]Run actions/upload-artifact@v4
+2026-06-07T03:26:27.8889838Z with:
+2026-06-07T03:26:27.8890159Z   name: github-pages
+2026-06-07T03:26:27.8890569Z   path: /home/runner/work/_temp/artifact.tar
+2026-06-07T03:26:27.8891055Z   retention-days: 1
+2026-06-07T03:26:27.8891416Z   if-no-files-found: error
+2026-06-07T03:26:27.8891810Z   compression-level: 6
+2026-06-07T03:26:27.8892171Z   overwrite: false
+2026-06-07T03:26:27.8892532Z   include-hidden-files: false
+2026-06-07T03:26:27.8892926Z env:
+2026-06-07T03:26:27.8893227Z   GITHUB_PAGES: true
+2026-06-07T03:26:27.8893566Z ##[endgroup]
+2026-06-07T03:26:28.1274992Z With the provided path, there will be 1 file uploaded
+2026-06-07T03:26:28.1275896Z Artifact name is valid!
+2026-06-07T03:26:28.1276310Z Root directory input is valid!
+2026-06-07T03:26:28.2459435Z Beginning upload of artifact content to blob storage
+2026-06-07T03:26:28.6853160Z Uploaded bytes 5669690
+2026-06-07T03:26:28.7013374Z Finished uploading artifact content to blob storage!
+2026-06-07T03:26:28.7016287Z SHA256 digest of uploaded artifact zip is 31e0f3de2d0c0b39fa2c1255017769e10067fad3b3171ce97ddf5ad061f8b569
+2026-06-07T03:26:28.7017977Z Finalizing artifact upload
+2026-06-07T03:26:28.8309104Z Artifact github-pages.zip successfully finalized. Artifact ID 7460358068
+2026-06-07T03:26:28.8310303Z Artifact github-pages has been successfully uploaded! Final size is 5669690 bytes. Artifact ID is 7460358068
+2026-06-07T03:26:28.8317319Z Artifact download URL: https://github.com/thirumuruganra/thirumuruganra.github.io/actions/runs/27081483963/artifacts/7460358068
