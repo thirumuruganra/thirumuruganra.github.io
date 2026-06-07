@@ -1,8 +1,8 @@
 const tags = ["Based in Chennai, India"];
 const arsenal: Array<[string, string]> = [
   ["Programming", "Java, Python, C"],
-  ["Web", "TypeScript, React, JavaScript, HTML, CSS, FastAPI"],
-  ["Data & AI", "Gen AI, Local LLMs, Machine Learning, Data Analysis"],
+  ["Web", "HTML, CSS, JavaScript"],
+  ["Data & AI", "Gen AI, Machine Learning, Data Analysis"],
   ["Database", "Oracle SQL, MySQL"],
 ];
 

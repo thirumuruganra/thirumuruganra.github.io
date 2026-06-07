@@ -23,8 +23,23 @@ export function MenuBar({ theme, toggleTheme }: Props) {
   }, []);
 
   useEffect(() => {
-    const nav = navigator as Navigator & { getBattery?: () => Promise<{ level: number }> };
-    nav.getBattery?.().then((b) => setBattery(b.level)).catch(() => {});
+    type BatteryManager = {
+      level: number;
+      addEventListener: (type: string, listener: () => void) => void;
+      removeEventListener: (type: string, listener: () => void) => void;
+    };
+    const nav = navigator as Navigator & { getBattery?: () => Promise<BatteryManager> };
+    if (!nav.getBattery) return;
+    let battery: BatteryManager | null = null;
+    const update = () => battery && setBattery(battery.level);
+    nav.getBattery().then((b) => {
+      battery = b;
+      update();
+      b.addEventListener("levelchange", update);
+    }).catch(() => {});
+    return () => {
+      battery?.removeEventListener("levelchange", update);
+    };
   }, []);
 
   const time = now ? now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false }) : "";

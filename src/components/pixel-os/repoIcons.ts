@@ -6,7 +6,12 @@
 export type RepoMeta = { icon?: string; category?: string };
 
 export const repoIcons: Record<string, RepoMeta> = {
-  // add your icons here
+  "note-it": { icon: "/project-icons/note-it.png", category: "VSC Extension" },
+  truetone: { icon: "/project-icons/truetone.png" },
+  "clg-clubs": { icon: "/project-icons/clg-clubs.png" },
+  PhishTank: { icon: "/project-icons/PhishTank.png", category: "Cybersecurity & AI" },
+  "PACMAN-using-C-and-RAYLIB": { icon: "/project-icons/PACMAN-using-C-and-RAYLIB.png", category: "Game" },
+  paisa: { icon: "/project-icons/paisa.png" },
 };
 
 export function getRepoMeta(name: string): RepoMeta {

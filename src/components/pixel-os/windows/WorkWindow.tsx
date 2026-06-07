@@ -8,13 +8,18 @@ function RepoIcon({ name }: { name: string }) {
   const icon = getRepoIcon(name);
   if (!icon) return <FolderIcon className="w-10 h-10 text-pixel-accent" />;
   if (icon.startsWith("/") || icon.startsWith("http") || icon.includes(".")) {
+    const rounded = name.toLowerCase() !== "clg-clubs";
     return (
-      <img
-        src={icon}
-        alt=""
-        className="w-10 h-10"
-        style={{ imageRendering: "pixelated" }}
-      />
+      <div
+        className={`w-10 h-10 overflow-hidden ${rounded ? "rounded-lg" : ""}`}
+      >
+        <img
+          src={icon}
+          alt=""
+          className={`w-full h-full block object-cover ${rounded ? "rounded-lg" : ""}`}
+          style={{ imageRendering: "pixelated" }}
+        />
+      </div>
     );
   }
   return (
