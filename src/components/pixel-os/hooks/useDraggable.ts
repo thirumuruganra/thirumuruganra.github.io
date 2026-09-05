@@ -12,7 +12,6 @@ export function useDraggable(
     bottomInset?: number;
   },
 ) {
-  const [position, setPosition] = useState<Position>(initial);
   const dragging = useRef(false);
   const start = useRef({ pointerX: 0, pointerY: 0, x: 0, y: 0 });
   const margin = opts?.margin ?? 8;
@@ -33,6 +32,16 @@ export function useDraggable(
     },
     [margin, topInset, bottomInset, getSize],
   );
+
+  const [position, setPosition] = useState<Position>(() => clamp(initial.x, initial.y));
+
+  // Keep the window on-screen once the real viewport/size is known and on resize.
+  useEffect(() => {
+    setPosition((p) => {
+      const c = clamp(p.x, p.y);
+      return c.x === p.x && c.y === p.y ? p : c;
+    });
+  }, [clamp]);
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {

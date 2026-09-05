@@ -43,8 +43,15 @@ function shouldSkipBoot(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+function isMobile(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(max-width: 1023px)").matches;
+}
+
 export function PixelDesktop() {
-  const [windows, setWindows] = useState(initial);
+  const [windows, setWindows] = useState(() =>
+    isMobile() ? { ...initial, vanakkam: { ...initial.vanakkam, open: false } } : initial,
+  );
   const [zTop, setZTop] = useState(10);
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [booted, setBooted] = useState<boolean>(() => shouldSkipBoot());
@@ -94,14 +101,17 @@ export function PixelDesktop() {
     setWindows((w) => ({ ...w, [id]: { ...w[id], maximized: !w[id].maximized } }));
   }, []);
   const initials = useMemo(() => {
-    const baseX = typeof window !== "undefined" ? Math.max(40, window.innerWidth / 2 - 360) : 80;
-    return {
-      vanakkam: { x: baseX + 20, y: 72 },
-      work: { x: baseX, y: 80 },
-      about: { x: baseX + 40, y: 120 },
-      contact: { x: baseX + 80, y: 160 },
-      resume: { x: baseX + 120, y: 100 },
-    };
+    const vw = typeof window !== "undefined" ? window.innerWidth : 1024;
+    const mobile = vw < 640;
+    const originX = mobile ? 10 : Math.max(40, vw / 2 - 360);
+    const originY = mobile ? 52 : 72;
+    const sx = mobile ? 6 : 28;
+    const sy = mobile ? 20 : 26;
+    // cascade so windows stack like cards with corners peeking, not at random spots
+    const order: WindowId[] = ["vanakkam", "work", "about", "contact", "resume"];
+    return Object.fromEntries(
+      order.map((id, i) => [id, { x: originX + i * sx, y: originY + i * sy }]),
+    ) as Record<WindowId, { x: number; y: number }>;
   }, []);
 
   return (
@@ -113,8 +123,11 @@ export function PixelDesktop() {
         toggleTheme={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
       />
       <PortraitCard />
-      <WeatherCard />
-      <CurrentlyCard />
+      {/* mobile: stack cards just above the dock; desktop: cards self-position */}
+      <div className="fixed inset-x-4 bottom-[128px] z-[1] flex flex-col gap-3 lg:contents">
+        <WeatherCard />
+        <CurrentlyCard />
+      </div>
 
       <PixelWindow
         title={titles.vanakkam}

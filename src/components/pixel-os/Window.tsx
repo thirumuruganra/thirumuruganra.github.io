@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { useDraggable } from "./hooks/useDraggable";
 
 export type WindowState = {
@@ -50,11 +50,12 @@ export function PixelWindow({
 }: Props) {
   const { w: vw, h: vh } = useViewport();
   const isMobile = vw < 640;
-  const winW = isMobile ? Math.min(vw - 16, 520) : Math.min(width, vw - 32);
-  const winH = isMobile ? Math.min(vh - 160, 600) : Math.min(height, vh - 120);
+  const winW = isMobile ? Math.min(vw - 20, 520) : Math.min(width, vw - 32);
+  const winH = isMobile ? Math.min(vh - 210, 560) : Math.min(height, vh - 120);
+  const getSize = useCallback(() => ({ w: winW, h: winH }), [winW, winH]);
   const { position, setPosition, dragHandleProps } = useDraggable(initial, {
-    disabled: state.maximized || isMobile,
-    getSize: () => ({ w: winW, h: winH }),
+    disabled: state.maximized,
+    getSize,
     topInset: 48,
     bottomInset: 100,
   });
@@ -68,8 +69,8 @@ export function PixelWindow({
 
   if (!state.open || state.minimized) return null;
 
-  const left = isMobile ? (vw - winW) / 2 : position.x;
-  const top = isMobile ? 56 : position.y;
+  const left = position.x;
+  const top = position.y;
 
   const style: React.CSSProperties = state.maximized
     ? {
@@ -94,7 +95,7 @@ export function PixelWindow({
       onPointerDown={onFocus}
     >
       <div
-        {...(isMobile ? {} : dragHandleProps)}
+        {...dragHandleProps}
         className="flex items-center gap-3 px-3.5 py-2.5 bg-pixel-titlebar text-[color:var(--pixel-titlebar-ink)] border-b-2 border-[color:var(--pixel-border)] select-none cursor-grab active:cursor-grabbing"
         onDoubleClick={() => {
           onMaximize();

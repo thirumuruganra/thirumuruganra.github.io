@@ -34,7 +34,7 @@ export function WeatherCard() {
 
   return (
     <div
-      className="hidden lg:block fixed z-[1] right-11 top-[220px] w-[246px] p-4 bg-pixel-window pixel-border rounded-[16px] anim-pop-in"
+      className="static w-auto lg:fixed lg:z-[1] lg:right-11 lg:top-[220px] lg:w-[246px] p-4 bg-pixel-window pixel-border rounded-[16px] anim-pop-in"
       style={{ animationDelay: "100ms" }}
     >
       <div className="flex items-baseline justify-between">

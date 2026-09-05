@@ -9,7 +9,7 @@ const items = [
 export function CurrentlyCard() {
   return (
     <div
-      className="hidden lg:block fixed z-[1] right-11 top-[436px] w-[246px] p-3.5 bg-pixel-window pixel-border rounded-[16px] anim-pop-in"
+      className="static w-auto lg:fixed lg:z-[1] lg:right-11 lg:top-[436px] lg:w-[246px] p-3.5 bg-pixel-window pixel-border rounded-[16px] anim-pop-in"
       style={{ animationDelay: "140ms" }}
     >
       <div className="font-display text-sm tracking-wider text-pixel-muted">CURRENTLY</div>
