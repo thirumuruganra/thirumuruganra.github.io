@@ -1,0 +1,50 @@
+[
+  {
+    "name": "clg-clubs",
+    "description": "A full-stack web application to serve as a platform for college students to discover and engage with campus events and clubs",
+    "language": "JavaScript",
+    "link": "https://github.com/thirumuruganra/clg-clubs",
+    "stars": 3,
+    "forks": 0
+  },
+  {
+    "name": "paisa",
+    "description": "Paisa is a local-first personal finance app for importing bank statements",
+    "language": "Python",
+    "link": "https://github.com/thirumuruganra/paisa",
+    "stars": 1,
+    "forks": 0
+  },
+  {
+    "name": "note-it",
+    "description": "Your automatic, project-specific scratchpad for VS Code.",
+    "language": "TypeScript",
+    "link": "https://github.com/thirumuruganra/note-it",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "name": "truetone",
+    "description": "Voice-aware LinkedIn post generator that turns rough notes into polished drafts using your tone, audience, and sample posts.",
+    "language": "TypeScript",
+    "link": "https://github.com/thirumuruganra/truetone",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "name": "PhishTank",
+    "description": "A comprehensive AI-powered solution to detect and prevent phishing attacks through URLs and emails",
+    "language": "Jupyter Notebook",
+    "link": "https://github.com/thirumuruganra/PhishTank",
+    "stars": 1,
+    "forks": 0
+  },
+  {
+    "name": "PACMAN-using-C-and-RAYLIB",
+    "description": "A faithful recreation of the classic arcade game.",
+    "language": "C",
+    "link": "https://github.com/thirumuruganra/PACMAN-using-C-and-RAYLIB",
+    "stars": 6,
+    "forks": 4
+  }
+]

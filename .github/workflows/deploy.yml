@@ -1,12 +1,9 @@
-name: Deploy Site & Refresh Repo Data
+name: Deploy Site
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-    # Daily at 06:00 UTC — refresh repo stars/forks in public/repos.json
-    - cron: "0 6 * * *"
 
 permissions:
   contents: read
@@ -34,17 +31,6 @@ jobs:
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
-
-      - name: Fetch repo details
-        run: |
-          curl -sf "https://pinned.berrysauce.dev/get/thirumuruganra" -o public/repos.json \
-            || gh api "users/thirumuruganra/repos?sort=updated&per_page=30" -q \
-               '[.[] | select(.fork|not)][:6] | map({name, description, language, link: .html_url, stars: .stargazers_count, forks: .forks_count})' \
-               > public/repos.json
-          node -e "const d=JSON.parse(require('fs').readFileSync('public/repos.json'));if(!Array.isArray(d)||!d.length)process.exit(1)" \
-            || rm -f public/repos.json
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build site
         run: bun run build
