@@ -26,18 +26,8 @@ type PinnedRaw = Array<{
 async function fetchStatic(): Promise<Repo[]> {
   const res = await fetch("/repos.json", { cache: "no-cache" });
   if (!res.ok) throw new Error("repos.json missing");
-  const data = await res.json();
+  const data: PinnedRaw = await res.json();
   if (!Array.isArray(data) || data.length === 0) throw new Error("repos.json empty");
-  return mapPinned(data);
-}
-
-async function fetchPinned(): Promise<Repo[]> {
-  const res = await fetch(`https://pinned.berrysauce.dev/get/${USERNAME}`);
-  if (!res.ok) throw new Error("pinned api failed");
-  return mapPinned(await res.json());
-}
-
-function mapPinned(data: PinnedRaw): Repo[] {
   return data.map((r) => {
     const name = r.name ?? r.repo ?? "";
     const author = r.author ?? USERNAME;
@@ -52,33 +42,6 @@ function mapPinned(data: PinnedRaw): Repo[] {
   });
 }
 
-async function fetchFallback(): Promise<Repo[]> {
-  const res = await fetch(
-    `https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=30`,
-  );
-  if (!res.ok) throw new Error("github api failed");
-  const data: Array<{
-    name: string;
-    description: string | null;
-    language: string | null;
-    html_url: string;
-    stargazers_count: number;
-    forks_count: number;
-    fork: boolean;
-  }> = await res.json();
-  return data
-    .filter((r) => !r.fork)
-    .slice(0, 6)
-    .map((r) => ({
-      name: r.name,
-      description: r.description ?? "",
-      language: r.language,
-      html_url: r.html_url ?? `https://github.com/${USERNAME}/${r.name}`,
-      stars: r.stargazers_count,
-      forks: r.forks_count,
-    }));
-}
-
 let cache: Repo[] | null = null;
 
 export function usePinnedRepos() {
@@ -91,9 +54,7 @@ export function usePinnedRepos() {
     let alive = true;
     (async () => {
       try {
-        const list = await fetchStatic()
-          .catch(() => fetchPinned())
-          .catch(() => fetchFallback());
+        const list = await fetchStatic();
         if (!alive) return;
         cache = list;
         setRepos(list);
