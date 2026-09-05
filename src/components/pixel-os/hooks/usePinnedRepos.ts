@@ -11,20 +11,33 @@ export type Repo = {
 
 const USERNAME = "thirumuruganra";
 
+type PinnedRaw = Array<{
+  author?: string;
+  name?: string;
+  repo?: string;
+  description?: string | null;
+  language?: string | null;
+  link?: string;
+  url?: string;
+  stars?: number;
+  forks?: number;
+}>;
+
+async function fetchStatic(): Promise<Repo[]> {
+  const res = await fetch("/repos.json", { cache: "no-cache" });
+  if (!res.ok) throw new Error("repos.json missing");
+  const data = await res.json();
+  if (!Array.isArray(data) || data.length === 0) throw new Error("repos.json empty");
+  return mapPinned(data);
+}
+
 async function fetchPinned(): Promise<Repo[]> {
   const res = await fetch(`https://pinned.berrysauce.dev/get/${USERNAME}`);
   if (!res.ok) throw new Error("pinned api failed");
-  const data: Array<{
-    author?: string;
-    name?: string;
-    repo?: string;
-    description?: string | null;
-    language?: string | null;
-    link?: string;
-    url?: string;
-    stars?: number;
-    forks?: number;
-  }> = await res.json();
+  return mapPinned(await res.json());
+}
+
+function mapPinned(data: PinnedRaw): Repo[] {
   return data.map((r) => {
     const name = r.name ?? r.repo ?? "";
     const author = r.author ?? USERNAME;
@@ -78,7 +91,9 @@ export function usePinnedRepos() {
     let alive = true;
     (async () => {
       try {
-        const list = await fetchPinned().catch(() => fetchFallback());
+        const list = await fetchStatic()
+          .catch(() => fetchPinned())
+          .catch(() => fetchFallback());
         if (!alive) return;
         cache = list;
         setRepos(list);
