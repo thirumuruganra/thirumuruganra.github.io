@@ -3,19 +3,20 @@ import { useEffect, useState } from "react";
 function SunHorizon({ dir }: { dir: "rise" | "set" }) {
   return (
     <svg
-      width="15"
-      height="15"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
+      strokeLinecap="square"
       shapeRendering="crispEdges"
       aria-hidden="true"
       className="shrink-0"
     >
-      <path d="M3 17h18" />
-      <path d="M8 17a4 4 0 0 1 8 0z" fill="currentColor" stroke="none" />
-      {dir === "rise" ? <path d="M12 13V8M9 11l3-3 3 3" /> : <path d="M12 17v5M9 19l3 3 3-3" />}
+      <path d="M12 3v2M5.5 6.5l1.5 1.5M18.5 6.5l-1.5 1.5M3 13h2M19 13h2" />
+      <path d="M7 15a5 5 0 0 1 10 0z" fill="currentColor" stroke="none" />
+      {dir === "rise" ? <path d="M2 19 12 15 22 19" /> : <path d="M2 15h20M4 19h6M14 19h6" />}
     </svg>
   );
 }
