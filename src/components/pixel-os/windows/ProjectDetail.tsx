@@ -65,7 +65,9 @@ export function ProjectDetail({ repo, onBack }: Props) {
           <h2 className="font-display text-sm sm:text-base break-words">{repo.name}</h2>
           <div className="flex flex-wrap items-center gap-2 mt-2 text-sm">
             {repo.language && (
-              <span className="pixel-border-2 rounded-full px-2 py-0.5 bg-pixel-titlebar">{repo.language}</span>
+              <span className="pixel-border-2 rounded-full px-2 py-0.5 bg-pixel-titlebar">
+                {repo.language}
+              </span>
             )}
             <span className="inline-flex items-center gap-1">
               <StarIcon className="w-4 h-4" /> {repo.stars}

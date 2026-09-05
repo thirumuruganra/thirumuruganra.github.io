@@ -9,8 +9,8 @@ export const repoIcons: Record<string, RepoMeta> = {
   "note-it": { icon: "/project-icons/note-it.png", category: "VSC Extension" },
   truetone: { icon: "/project-icons/truetone.png" },
   "clg-clubs": { icon: "/project-icons/clg-clubs.png" },
-  PhishTank: { icon: "/project-icons/PhishTank.png", category: "Cybersecurity & AI" },
-  "PACMAN-using-C-and-RAYLIB": {
+  phishtank: { icon: "/project-icons/PhishTank.png", category: "Cybersecurity & AI" },
+  "pacman-using-c-and-raylib": {
     icon: "/project-icons/PACMAN-using-C-and-RAYLIB.png",
     category: "Game",
   },
@@ -18,15 +18,7 @@ export const repoIcons: Record<string, RepoMeta> = {
 };
 
 export function getRepoMeta(name: string): RepoMeta {
-  const key = name.toLowerCase();
-  for (const k of Object.keys(repoIcons)) {
-    if (k.toLowerCase() === key) return repoIcons[k];
-  }
-  return {};
-}
-
-export function getRepoIcon(name: string): string | null {
-  return getRepoMeta(name).icon ?? null;
+  return repoIcons[name.toLowerCase()] ?? {};
 }
 
 // Pick a friendly category label, falling back to language → category map

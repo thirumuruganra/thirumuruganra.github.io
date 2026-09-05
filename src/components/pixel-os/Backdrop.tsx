@@ -69,15 +69,13 @@ export function Backdrop() {
       <div
         className="absolute inset-0 dark:hidden"
         style={{
-          background:
-            "linear-gradient(180deg, #bcd9e8 0%, #dceaea 42%, #f6ead4 78%, #f5ead8 100%)",
+          background: "linear-gradient(180deg, #bcd9e8 0%, #dceaea 42%, #f6ead4 78%, #f5ead8 100%)",
         }}
       />
       <div
         className="absolute inset-0 hidden dark:block"
         style={{
-          background:
-            "linear-gradient(180deg, #1b1a26 0%, #2a2333 40%, #3d2f31 74%, #402d24 100%)",
+          background: "linear-gradient(180deg, #1b1a26 0%, #2a2333 40%, #3d2f31 74%, #402d24 100%)",
         }}
       />
 
@@ -105,7 +103,11 @@ export function Backdrop() {
 
       {/* Clouds (light mode only) */}
       <div className="absolute inset-0 dark:hidden">
-        <Cloud className="top-32 left-[10%] sm:top-24 sm:left-[20%]" duration="26s" opacity={0.92} />
+        <Cloud
+          className="top-32 left-[10%] sm:top-24 sm:left-[20%]"
+          duration="26s"
+          opacity={0.92}
+        />
         <Cloud className="top-52 left-[45%] sm:top-40 sm:left-[55%]" duration="34s" opacity={0.8} />
         <Cloud className="top-[55%] left-[5%] sm:left-[10%]" duration="30s" opacity={0.7} />
       </div>
@@ -167,7 +169,10 @@ function Cloud({
   opacity: number;
 }) {
   return (
-    <div className={`absolute ${className}`} style={{ animation: `pixel-driftx ${duration} ease-in-out infinite alternate` }}>
+    <div
+      className={`absolute ${className}`}
+      style={{ animation: `pixel-driftx ${duration} ease-in-out infinite alternate` }}
+    >
       <div
         style={{
           width: 80,

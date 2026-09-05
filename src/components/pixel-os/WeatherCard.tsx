@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useNow } from "./hooks/useNow";
 
 function SunHorizon({ dir }: { dir: "rise" | "set" }) {
   return (
@@ -22,12 +22,7 @@ function SunHorizon({ dir }: { dir: "rise" | "set" }) {
 }
 
 export function WeatherCard() {
-  const [now, setNow] = useState<Date | null>(null);
-  useEffect(() => {
-    setNow(new Date());
-    const t = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(t);
-  }, []);
+  const now = useNow();
 
   const fmt = (opts: Intl.DateTimeFormatOptions) =>
     now ? new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", ...opts }).format(now) : "";

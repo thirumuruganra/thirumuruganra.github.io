@@ -59,8 +59,12 @@ export function ResumeWindow() {
         <h3 className="font-display text-xs mb-3">// EDUCATION</h3>
         <div className="pixel-border-2 rounded-[12px] p-3 bg-pixel-window">
           <div className="font-display text-[11px]">B.E. Computer Science and Engineering</div>
-          <div className="text-lg text-pixel-accent">Sri Sivasubramaniya Nadar College of Engineering</div>
-          <div className="text-base mt-1">2023 — 2027 · CGPA 8.85 (till 6th sem) · Ranked 9th / 180</div>
+          <div className="text-lg text-pixel-accent">
+            Sri Sivasubramaniya Nadar College of Engineering
+          </div>
+          <div className="text-base mt-1">
+            2023 — 2027 · CGPA 8.85 (till 6th sem) · Ranked 9th / 180
+          </div>
         </div>
       </section>
     </div>

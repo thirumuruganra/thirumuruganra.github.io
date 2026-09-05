@@ -18,10 +18,7 @@ export function AboutWindow() {
       </p>
       <div className="flex flex-wrap gap-2">
         {tags.map((t) => (
-          <span
-            key={t}
-            className="pixel-border-2 rounded-full px-2 py-1 text-sm bg-pixel-titlebar"
-          >
+          <span key={t} className="pixel-border-2 rounded-full px-2 py-1 text-sm bg-pixel-titlebar">
             [{t}]
           </span>
         ))}

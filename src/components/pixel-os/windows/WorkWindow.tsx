@@ -1,29 +1,22 @@
 import { useState } from "react";
 import { FolderIcon } from "../icons";
 import { usePinnedRepos, type Repo } from "../hooks/usePinnedRepos";
-import { getRepoCategory, getRepoIcon } from "../repoIcons";
+import { getRepoCategory, getRepoMeta } from "../repoIcons";
 import { ProjectDetail } from "./ProjectDetail";
 
 function RepoIcon({ name }: { name: string }) {
-  const icon = getRepoIcon(name);
+  const icon = getRepoMeta(name).icon;
   if (!icon) return <FolderIcon className="w-10 h-10 text-pixel-accent" />;
-  if (icon.startsWith("/") || icon.startsWith("http") || icon.includes(".")) {
-    const rounded = name.toLowerCase() !== "clg-clubs";
-    return (
-      <div className={`w-10 h-10 overflow-hidden ${rounded ? "rounded-[8px]" : ""}`}>
-        <img
-          src={icon}
-          alt=""
-          className={`w-full h-full block object-cover ${rounded ? "rounded-[8px]" : ""}`}
-          style={{ imageRendering: "pixelated" }}
-        />
-      </div>
-    );
-  }
+  const rounded = name.toLowerCase() !== "clg-clubs";
   return (
-    <span className="text-4xl leading-none" style={{ imageRendering: "pixelated" }}>
-      {icon}
-    </span>
+    <div className={`w-10 h-10 overflow-hidden ${rounded ? "rounded-[8px]" : ""}`}>
+      <img
+        src={icon}
+        alt=""
+        className={`w-full h-full block object-cover ${rounded ? "rounded-[8px]" : ""}`}
+        style={{ imageRendering: "pixelated" }}
+      />
+    </div>
   );
 }
 
@@ -42,7 +35,9 @@ export function WorkWindow() {
         <div className="text-pixel-accent font-display text-sm animate-pulse">Loading…</div>
       )}
       {error && !loading && (
-        <div className="pixel-border-2 rounded-[12px] p-3 text-sm">Couldn't load projects. Try refreshing.</div>
+        <div className="pixel-border-2 rounded-[12px] p-3 text-sm">
+          Couldn't load projects. Try refreshing.
+        </div>
       )}
       {repos && (
         <div className="grid grid-cols-3 gap-3 sm:gap-4">

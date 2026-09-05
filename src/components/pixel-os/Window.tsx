@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useDraggable } from "./hooks/useDraggable";
 
 export type WindowState = {
@@ -59,14 +59,6 @@ export function PixelWindow({
     topInset: 48,
     bottomInset: 100,
   });
-  const firstOpen = useRef(true);
-
-  useEffect(() => {
-    if (state.open && !state.minimized && firstOpen.current) {
-      firstOpen.current = false;
-    }
-  }, [state.open, state.minimized]);
-
   if (!state.open || state.minimized) return null;
 
   const left = position.x;

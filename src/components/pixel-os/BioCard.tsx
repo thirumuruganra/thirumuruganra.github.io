@@ -3,16 +3,17 @@ const tags = ["Java · Python · C", "React · TypeScript", "Gen AI · ML", "SQL
 export function BioCard() {
   return (
     <div>
-      <div className="font-display text-xs tracking-[0.1em] text-[color:var(--pixel-kicker)]">// HELLO WORLD</div>
+      <div className="font-display text-xs tracking-[0.1em] text-[color:var(--pixel-kicker)]">
+        // HELLO WORLD
+      </div>
       <h1 className="font-display text-3xl sm:text-[36px] font-semibold leading-[1.1] mt-2.5">
         I build software that
         <br />
         feels like a nice place.
       </h1>
       <p className="text-lg leading-snug mt-4 max-w-[54ch]">
-        CSE undergrad at SSN, Chennai, top 5% of my batch. I spend my days on web apps, a bit of
-        Gen AI, and far too long nudging pixels one at a time. Ex-SWE Intern @ Barclays, Value AI
-        Labs.
+        CSE undergrad at SSN, Chennai, top 5% of my batch. I spend my days on web apps, a bit of Gen
+        AI, and far too long nudging pixels one at a time. Ex-SWE Intern @ Barclays, Value AI Labs.
       </p>
       <div className="flex flex-wrap gap-2.5 mt-5">
         {tags.map((tag) => (

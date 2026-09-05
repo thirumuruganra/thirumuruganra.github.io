@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Backdrop } from "./Backdrop";
 import { BootSequence } from "./BootSequence";
 import { BioCard } from "./BioCard";
@@ -13,7 +13,8 @@ import { ContactWindow } from "./windows/ContactWindow";
 import { ResumeWindow } from "./windows/ResumeWindow";
 import { WorkWindow } from "./windows/WorkWindow";
 
-export type WindowId = "vanakkam" | "work" | "about" | "contact" | "resume";
+const WINDOW_IDS = ["vanakkam", "work", "about", "contact", "resume"] as const;
+export type WindowId = (typeof WINDOW_IDS)[number];
 
 const initial: Record<WindowId, WindowState> = {
   vanakkam: { open: true, minimized: false, maximized: false, z: 2 },
@@ -29,6 +30,10 @@ const titles: Record<WindowId, string> = {
   about: "About — Profile",
   contact: "Contact — Mail",
   resume: "Resume.pdf — Preview",
+};
+
+const sizes: Partial<Record<WindowId, { width: number; height: number }>> = {
+  vanakkam: { width: 660, height: 470 },
 };
 
 function getInitialTheme(): "light" | "dark" {
@@ -108,11 +113,18 @@ export function PixelDesktop() {
     const sx = mobile ? 6 : 28;
     const sy = mobile ? 20 : 26;
     // cascade so windows stack like cards with corners peeking, not at random spots
-    const order: WindowId[] = ["vanakkam", "work", "about", "contact", "resume"];
     return Object.fromEntries(
-      order.map((id, i) => [id, { x: originX + i * sx, y: originY + i * sy }]),
+      WINDOW_IDS.map((id, i) => [id, { x: originX + i * sx, y: originY + i * sy }]),
     ) as Record<WindowId, { x: number; y: number }>;
   }, []);
+
+  const bodies: Record<WindowId, ReactNode> = {
+    vanakkam: <BioCard />,
+    work: <WorkWindow />,
+    about: <AboutWindow />,
+    contact: <ContactWindow />,
+    resume: <ResumeWindow />,
+  };
 
   return (
     <div className="relative z-10 w-screen h-screen overflow-hidden text-foreground">
@@ -129,64 +141,21 @@ export function PixelDesktop() {
         <CurrentlyCard />
       </div>
 
-      <PixelWindow
-        title={titles.vanakkam}
-        state={windows.vanakkam}
-        onClose={() => close("vanakkam")}
-        onMinimize={() => minimize("vanakkam")}
-        onMaximize={() => maximize("vanakkam")}
-        onFocus={() => focus("vanakkam")}
-        initial={initials.vanakkam}
-        width={660}
-        height={470}
-      >
-        <BioCard />
-      </PixelWindow>
-
-      <PixelWindow
-        title={titles.work}
-        state={windows.work}
-        onClose={() => close("work")}
-        onMinimize={() => minimize("work")}
-        onMaximize={() => maximize("work")}
-        onFocus={() => focus("work")}
-        initial={initials.work}
-      >
-        <WorkWindow />
-      </PixelWindow>
-      <PixelWindow
-        title={titles.about}
-        state={windows.about}
-        onClose={() => close("about")}
-        onMinimize={() => minimize("about")}
-        onMaximize={() => maximize("about")}
-        onFocus={() => focus("about")}
-        initial={initials.about}
-      >
-        <AboutWindow />
-      </PixelWindow>
-      <PixelWindow
-        title={titles.contact}
-        state={windows.contact}
-        onClose={() => close("contact")}
-        onMinimize={() => minimize("contact")}
-        onMaximize={() => maximize("contact")}
-        onFocus={() => focus("contact")}
-        initial={initials.contact}
-      >
-        <ContactWindow />
-      </PixelWindow>
-      <PixelWindow
-        title={titles.resume}
-        state={windows.resume}
-        onClose={() => close("resume")}
-        onMinimize={() => minimize("resume")}
-        onMaximize={() => maximize("resume")}
-        onFocus={() => focus("resume")}
-        initial={initials.resume}
-      >
-        <ResumeWindow />
-      </PixelWindow>
+      {WINDOW_IDS.map((id) => (
+        <PixelWindow
+          key={id}
+          title={titles[id]}
+          state={windows[id]}
+          onClose={() => close(id)}
+          onMinimize={() => minimize(id)}
+          onMaximize={() => maximize(id)}
+          onFocus={() => focus(id)}
+          initial={initials[id]}
+          {...sizes[id]}
+        >
+          {bodies[id]}
+        </PixelWindow>
+      ))}
 
       <Dock onOpen={open} onHome={() => open("vanakkam")} />
     </div>

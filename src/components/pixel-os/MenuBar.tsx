@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNow } from "./hooks/useNow";
 import {
   BatteryIcon,
   BellIcon,
@@ -12,14 +13,8 @@ import {
 type Props = { theme: "light" | "dark"; toggleTheme: () => void };
 
 export function MenuBar({ theme, toggleTheme }: Props) {
-  const [now, setNow] = useState<Date | null>(null);
+  const now = useNow();
   const [battery, setBattery] = useState<number | null>(null);
-
-  useEffect(() => {
-    setNow(new Date());
-    const t = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(t);
-  }, []);
 
   useEffect(() => {
     type BatteryManager = {

@@ -6,7 +6,12 @@ export function PortraitCard() {
     >
       <div
         className="absolute left-1/2 -top-3.5 border-2 border-black/35"
-        style={{ width: 84, height: 26, background: "rgba(198,113,57,.35)", transform: "translateX(-50%) rotate(-3deg)" }}
+        style={{
+          width: 84,
+          height: 26,
+          background: "rgba(198,113,57,.35)",
+          transform: "translateX(-50%) rotate(-3deg)",
+        }}
       />
       <div className="w-full h-[186px] border-2 border-black rounded-[6px] overflow-hidden bg-pixel-muted">
         <img
