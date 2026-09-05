@@ -1,4 +1,4 @@
-import { Home } from "pixelarticons/react/Home";
+import { Hand } from "pixelarticons/react/Hand";
 import { Briefcase } from "pixelarticons/react/Briefcase";
 import { User } from "pixelarticons/react/User";
 import { Mail } from "pixelarticons/react/Mail";
@@ -18,7 +18,7 @@ type Item = {
 };
 
 const items: Item[] = [
-  { id: "home", label: "Home", Icon: Home },
+  { id: "home", label: "hi!", Icon: Hand },
   { id: "work", label: "Work", Icon: Briefcase },
   { id: "about", label: "About", Icon: User },
   { id: "contact", label: "Contact", Icon: Mail },
