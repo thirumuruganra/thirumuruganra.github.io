@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&display=swap");
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -8,6 +8,7 @@
 @theme inline {
   --font-pixel: "Pixelify Sans", monospace;
   --font-display: "Pixelify Sans", monospace;
+  --font-body: "Figtree", system-ui, sans-serif;
   --font-sticky: "Caveat", cursive;
   --radius-sm: 0px;
   --radius-md: 0px;
@@ -44,16 +45,49 @@
 
 :root {
   --radius: 0px;
-  --pixel-border: #000000;
-  --pixel-window: #fefcf3;
-  --pixel-dock: #fefcf3;
-  --pixel-titlebar: #d6e4ff;
-  --pixel-accent: #89b4fa;
+  --pixel-border: #201e1d;
+  --pixel-window: #f9f4ed;
+  --pixel-surface-2: #eee7db;
+  --pixel-dock: #f9f4ed;
+  --pixel-titlebar: #ffe1d0;
+  --pixel-titlebar-ink: #402310;
+  --pixel-accent: #c67139;
+  --pixel-accent-hover: #b2622d;
+  --pixel-kicker: #8c491a;
   --pixel-sticky: #fff170;
   --pixel-sticky-ink: #2b2b2b;
-  --pixel-muted: #6b6b6b;
-  --pixel-shadow-color: #000000;
-  --pixel-dot: rgba(0, 0, 0, 0.05);
+  --pixel-muted: #645c50;
+  --pixel-shadow-color: #201e1d;
+  --pixel-dot: rgba(32, 30, 29, 0.05);
+
+  /* Organic design-system tonal ramps (terracotta + sage) */
+  --color-neutral-100: #f9f4ed;
+  --color-neutral-200: #eee7db;
+  --color-neutral-300: #dcd3c4;
+  --color-neutral-400: #c0b6a5;
+  --color-neutral-700: #645c50;
+  --color-neutral-800: #474238;
+  --color-neutral-900: #2e2b25;
+
+  --color-accent-100: #fff2eb;
+  --color-accent-200: #ffe1d0;
+  --color-accent-300: #ffc6a5;
+  --color-accent-400: #f6a06b;
+  --color-accent-500: #d67f48;
+  --color-accent-600: #b2622d;
+  --color-accent-700: #8c491a;
+  --color-accent-800: #643312;
+  --color-accent-900: #402310;
+
+  --color-accent-2-100: #f0fae1;
+  --color-accent-2-200: #e1eecc;
+  --color-accent-2-300: #ccdbb2;
+  --color-accent-2-400: #aebf92;
+  --color-accent-2-500: #8fa073;
+  --color-accent-2-600: #728157;
+  --color-accent-2-700: #56633f;
+  --color-accent-2-800: #3d472b;
+  --color-accent-2-900: #272e1b;
 
   --background: oklch(0.99 0.02 100);
   --foreground: oklch(0.18 0.02 280);
@@ -77,15 +111,19 @@
 }
 
 .dark {
-  --pixel-border: #ffffff;
-  --pixel-window: #1a1133;
-  --pixel-dock: #1c1d2b;
-  --pixel-titlebar: #3b2a5e;
-  --pixel-accent: #cba6f7;
+  --pixel-border: #f4ece0;
+  --pixel-window: #2e2b25;
+  --pixel-surface-2: #3a352c;
+  --pixel-dock: #2e2b25;
+  --pixel-titlebar: #ffe1d0;
+  --pixel-titlebar-ink: #402310;
+  --pixel-accent: #f6a06b;
+  --pixel-accent-hover: #d67f48;
+  --pixel-kicker: #ffc6a5;
   --pixel-sticky: #fde047;
   --pixel-sticky-ink: #1a1133;
-  --pixel-muted: #b9b3d6;
-  --pixel-shadow-color: #ffffff;
+  --pixel-muted: #c0b6a5;
+  --pixel-shadow-color: rgba(0, 0, 0, 0.55);
   --pixel-dot: rgba(255, 255, 255, 0.05);
 
   --background: oklch(0.14 0.07 290);
@@ -115,8 +153,8 @@
   }
   html,
   body {
-    font-family: var(--font-pixel);
-    font-size: 18px;
+    font-family: var(--font-body);
+    font-size: 17px;
     /* Custom pixel cursor (16x16 black arrow with white outline) */
     cursor:
       url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' shape-rendering='crispEdges'><path d='M2 1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h-3v1h2v1h1v1h1v1h-1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v3h-1v-1h-1V1z' fill='black'/><path d='M3 2h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h-3v1h2v1h1v1h1v1h-1v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v3h-1V2z' fill='white'/></svg>")
@@ -273,6 +311,23 @@
   }
 }
 
+@keyframes pixel-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes pixel-driftx {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(60px);
+  }
+}
 @keyframes pixel-celestial-x {
   0% {
     transform: translate3d(180px, 0, 0);

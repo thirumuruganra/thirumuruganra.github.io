@@ -13,7 +13,7 @@ type Props = { theme: "light" | "dark"; toggleTheme: () => void };
 
 export function MenuBar({ theme, toggleTheme }: Props) {
   const [now, setNow] = useState<Date | null>(null);
-  const [battery, setBattery] = useState(0.98);
+  const [battery, setBattery] = useState<number | null>(null);
 
   useEffect(() => {
     setNow(new Date());
@@ -52,7 +52,7 @@ export function MenuBar({ theme, toggleTheme }: Props) {
     : "";
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[9999] h-9 sm:h-10 px-2 sm:px-4 flex items-center justify-between gap-2 bg-pixel-dock pixel-border-2 border-t-0 border-x-0 anim-fade-in">
+    <div className="fixed top-0 left-0 right-0 z-[9999] h-9 sm:h-10 px-2 sm:px-4 flex items-center justify-between gap-2 bg-pixel-dock font-pixel border-b-2 border-[color:var(--pixel-border)] anim-fade-in">
       <div className="font-pixel text-[11px] sm:text-base tracking-wider whitespace-nowrap shrink-0">
         THIRUMURUGAN RA
       </div>
@@ -65,22 +65,31 @@ export function MenuBar({ theme, toggleTheme }: Props) {
         </button>
         <SignalIcon className="w-4 h-4 sm:w-5 sm:h-5 sm:hidden" />
         <WifiIcon className="w-4 h-4 sm:w-5 sm:h-5 hidden sm:block" />
-        <div className="flex items-center gap-0.5 sm:gap-1">
-          <BatteryIcon className="w-5 h-4 sm:w-6 sm:h-5" />
-          <span>{Math.round(battery * 100)}%</span>
-        </div>
+        {battery !== null && (
+          <div className="flex items-center gap-0.5 sm:gap-1">
+            <BatteryIcon className="w-5 h-4 sm:w-6 sm:h-5" />
+            <span>{Math.round(battery * 100)}%</span>
+          </div>
+        )}
 
         <div className="hidden md:block">{date}</div>
         <div className="font-semibold whitespace-nowrap">{time}</div>
         <button
           onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className="p-0.5 hover:bg-pixel-titlebar shrink-0 press-tap transition-colors"
+          aria-label="Toggle light / dark"
+          title="Toggle light / dark"
+          className="flex items-center gap-1.5 shrink-0 pl-2 pr-3 py-1 pixel-border-2 rounded-full bg-[color:var(--pixel-surface-2)] press-tap text-sm hover:bg-pixel-accent hover:text-[#fff8f2] transition-colors"
         >
           {theme === "dark" ? (
-            <SunIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+            <>
+              <MoonIcon className="w-4 h-4" />
+              night
+            </>
           ) : (
-            <MoonIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+            <>
+              <SunIcon className="w-4 h-4" />
+              day
+            </>
           )}
         </button>
       </div>

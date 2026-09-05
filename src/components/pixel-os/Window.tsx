@@ -89,13 +89,13 @@ export function PixelWindow({
 
   return (
     <div
-      className="fixed bg-pixel-window text-foreground pixel-border pixel-shadow-lg flex flex-col anim-window-in"
+      className="fixed bg-pixel-window text-foreground pixel-border rounded-[18px] overflow-hidden flex flex-col anim-window-in"
       style={style}
       onPointerDown={onFocus}
     >
       <div
         {...(isMobile ? {} : dragHandleProps)}
-        className="flex items-center gap-2 px-3 py-2 bg-pixel-titlebar pixel-border-2 border-t-0 border-x-0 select-none cursor-grab active:cursor-grabbing"
+        className="flex items-center gap-3 px-3.5 py-2.5 bg-pixel-titlebar text-[color:var(--pixel-titlebar-ink)] border-b-2 border-[color:var(--pixel-border)] select-none cursor-grab active:cursor-grabbing"
         onDoubleClick={() => {
           onMaximize();
           if (!state.maximized) setPosition({ x: 8, y: 48 });
@@ -105,23 +105,23 @@ export function PixelWindow({
           <button
             aria-label="Close"
             onClick={onClose}
-            className="w-4 h-4 rounded-full bg-[#ff5f57] border-2 border-black press-tap hover:brightness-110 transition-all"
+            className="w-[15px] h-[15px] rounded-full bg-[#d8624b] border-2 border-black press-tap hover:brightness-110 transition-all"
           />
           <button
             aria-label="Minimize"
             onClick={onMinimize}
-            className="w-4 h-4 rounded-full bg-[#febc2e] border-2 border-black press-tap hover:brightness-110 transition-all"
+            className="w-[15px] h-[15px] rounded-full bg-[#e6a740] border-2 border-black press-tap hover:brightness-110 transition-all"
           />
           <button
             aria-label="Maximize"
             onClick={onMaximize}
-            className="w-4 h-4 rounded-full bg-[#28c840] border-2 border-black press-tap hover:brightness-110 transition-all"
+            className="w-[15px] h-[15px] rounded-full bg-[#8fa073] border-2 border-black press-tap hover:brightness-110 transition-all"
           />
         </div>
-        <div className="flex-1 text-center font-display text-[9px] sm:text-xs tracking-wider text-foreground truncate">
+        <div className="flex-1 text-center font-display text-xs tracking-wider truncate">
           {title}
         </div>
-        <div className="w-14" />
+        <div className="w-[62px]" />
       </div>
       <div
         className="flex-1 overflow-auto overscroll-contain p-4 sm:p-6 anim-fade-up"

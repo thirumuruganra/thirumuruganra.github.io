@@ -42,7 +42,7 @@ export function WorkWindow() {
         <div className="text-pixel-accent font-display text-sm animate-pulse">Loading…</div>
       )}
       {error && !loading && (
-        <div className="pixel-border-2 p-3 text-sm">Couldn't load projects. Try refreshing.</div>
+        <div className="pixel-border-2 rounded-[12px] p-3 text-sm">Couldn't load projects. Try refreshing.</div>
       )}
       {repos && (
         <div className="grid grid-cols-3 gap-3 sm:gap-4">
@@ -50,7 +50,7 @@ export function WorkWindow() {
             <button
               key={r.name}
               onClick={() => setSelected(r)}
-              className="text-left p-3 sm:p-4 pixel-border-2 bg-pixel-window hover:bg-pixel-titlebar press-tap anim-fade-up flex flex-col items-start gap-2 transition-colors"
+              className="text-left p-3 sm:p-4 pixel-border-2 rounded-[14px] bg-pixel-window hover:bg-pixel-titlebar press-tap anim-fade-up flex flex-col items-start gap-2 transition-colors"
               style={{ animationDelay: `${Math.min(i, 12) * 40}ms` }}
             >
               <RepoIcon name={r.name} />

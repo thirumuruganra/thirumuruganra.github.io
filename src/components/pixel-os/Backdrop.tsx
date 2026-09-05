@@ -19,7 +19,7 @@ function useParallax(strength = 12) {
     const updateFromPoint = (clientX: number, clientY: number) => {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      const nx = (clientX / w) * 2 - 1; // -1..1
+      const nx = (clientX / w) * 2 - 1;
       const ny = (clientY / h) * 2 - 1;
       target.current = { x: nx * strength, y: ny * strength };
     };
@@ -42,6 +42,17 @@ function useParallax(strength = 12) {
   return offset;
 }
 
+const STARS = Array.from({ length: 46 }, (_, i) => {
+  const a = Math.sin(i * 12.9898) * 43758.5453;
+  const b = Math.sin(i * 78.233) * 12345.6789;
+  return {
+    x: (a - Math.floor(a)) * 100,
+    y: (b - Math.floor(b)) * 58,
+    s: (i % 3) + 2,
+    dur: 2.4 + (i % 5) * 0.7,
+  };
+});
+
 export function Backdrop() {
   const offset = useParallax(5);
   const parallaxStyle = {
@@ -54,103 +65,118 @@ export function Backdrop() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Light mode: sun + clouds */}
-      <div className="dark:hidden absolute inset-0">
-        <div
-          className="absolute top-14 right-4 sm:top-16 sm:right-20 w-14 h-14 sm:w-20 sm:h-20"
-          style={parallaxStyle}
-          onMouseDown={(e) => e.preventDefault()}
-        >
-          <div
-            className="w-full h-full"
-            style={{
-              background: "#ffd86b",
-              boxShadow:
-                "0 0 0 4px #ffb347, 8px 0 0 0 #ffd86b, -8px 0 0 0 #ffd86b, 0 8px 0 0 #ffd86b, 0 -8px 0 0 #ffd86b",
-              imageRendering: "pixelated",
-            }}
-          />
-        </div>
+      {/* Sky */}
+      <div
+        className="absolute inset-0 dark:hidden"
+        style={{
+          background:
+            "linear-gradient(180deg, #bcd9e8 0%, #dceaea 42%, #f6ead4 78%, #f5ead8 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 hidden dark:block"
+        style={{
+          background:
+            "linear-gradient(180deg, #1b1a26 0%, #2a2333 40%, #3d2f31 74%, #402d24 100%)",
+        }}
+      />
 
-        <Cloud className="top-32 left-[10%] sm:top-24 sm:left-[20%]" />
-        <Cloud className="top-52 left-[45%] sm:top-40 sm:left-[55%]" />
-        <Cloud className="top-[55%] left-[5%] sm:left-[10%]" />
-        <Cloud className="top-[70%] left-[55%] sm:left-[70%]" />
+      {/* Sun (light) / moon (dark) */}
+      <div
+        className="absolute top-14 right-4 sm:top-16 sm:right-20 w-14 h-14 sm:w-20 sm:h-20"
+        style={parallaxStyle}
+        onMouseDown={(e) => e.preventDefault()}
+      >
+        <div
+          className="w-full h-full dark:hidden"
+          style={{
+            background: "#ffd86b",
+            boxShadow: "0 0 0 6px #f6a06b, 0 0 70px 18px rgba(255,216,107,.5)",
+          }}
+        />
+        <div
+          className="hidden w-full h-full rounded-full dark:block"
+          style={{
+            background: "#f5f0d2",
+            boxShadow: "0 0 0 6px rgba(245,240,210,.25), 0 0 70px 18px rgba(245,240,210,.28)",
+          }}
+        />
       </div>
-      {/* Dark mode: moon + stars */}
-      <div className="hidden dark:block absolute inset-0">
-        <div
-          className="absolute top-14 right-4 sm:top-16 sm:right-20 w-14 h-14 sm:w-20 sm:h-20"
-          style={parallaxStyle}
-          onMouseDown={(e) => e.preventDefault()}
-        >
+
+      {/* Clouds (light mode only) */}
+      <div className="absolute inset-0 dark:hidden">
+        <Cloud className="top-32 left-[10%] sm:top-24 sm:left-[20%]" duration="26s" opacity={0.92} />
+        <Cloud className="top-52 left-[45%] sm:top-40 sm:left-[55%]" duration="34s" opacity={0.8} />
+        <Cloud className="top-[55%] left-[5%] sm:left-[10%]" duration="30s" opacity={0.7} />
+      </div>
+
+      {/* Stars (dark mode only) */}
+      <div className="hidden absolute inset-0 dark:block">
+        {STARS.map((star, i) => (
           <div
-            className="w-full h-full rounded-full"
+            key={i}
+            className="absolute rounded-full"
             style={{
-              background: "#f5f3c4",
-              boxShadow: "inset -10px -6px 0 0 #cfc98a, 0 0 40px 6px rgba(255,255,200,0.25)",
+              left: `${star.x}%`,
+              top: `${star.y}%`,
+              width: star.s,
+              height: star.s,
+              background: "#fff6df",
+              animation: `pixel-twinkle ${star.dur}s ease-in-out infinite`,
             }}
           />
-        </div>
-
-        {Array.from({ length: 40 }).map((_, i) => (
-          <Star key={i} seed={i} />
         ))}
       </div>
-    </div>
-  );
-}
 
-function Cloud({ className = "" }: { className?: string }) {
-  return (
-    <div className={`absolute ${className}`}>
+      {/* Rolling hills */}
       <div
-        className="relative"
-        style={{
-          width: 80,
-          height: 24,
-          background: "#ffffff",
-          boxShadow: "0 -10px 0 0 #ffffff, 20px -16px 0 0 #ffffff, 40px -10px 0 0 #ffffff",
-          borderRadius: 2,
-          opacity: 0.9,
-        }}
+        className="absolute -left-[180px] -bottom-[300px] w-[1300px] h-[620px] rounded-full dark:hidden"
+        style={{ background: "#dfe9c6" }}
+      />
+      <div
+        className="absolute -left-[180px] -bottom-[300px] w-[1300px] h-[620px] rounded-full hidden dark:block"
+        style={{ background: "#5f6b48" }}
+      />
+      <div
+        className="absolute -right-[300px] -bottom-[340px] w-[1200px] h-[580px] rounded-full dark:hidden"
+        style={{ background: "#ccdbb2" }}
+      />
+      <div
+        className="absolute -right-[300px] -bottom-[340px] w-[1200px] h-[580px] rounded-full hidden dark:block"
+        style={{ background: "#56633f" }}
+      />
+      <div
+        className="absolute -left-[220px] -bottom-[260px] w-[1900px] h-[460px] dark:hidden"
+        style={{ background: "#aebf92", borderRadius: "50% 50% 0 0 / 100% 100% 0 0" }}
+      />
+      <div
+        className="absolute -left-[220px] -bottom-[260px] w-[1900px] h-[460px] hidden dark:block"
+        style={{ background: "#4a5334", borderRadius: "50% 50% 0 0 / 100% 100% 0 0" }}
       />
     </div>
   );
 }
 
-function Star({ seed }: { seed: number }) {
-  const hash1 = (n: number) => {
-    let h = n;
-    h = h ^ 61 ^ (h >>> 16);
-    h += h << 3;
-    h ^= h >>> 4;
-    h *= 0x27d4eb2d;
-    h ^= h >>> 15;
-    return (h >>> 0) / 0xffffffff;
-  };
-  const hash2 = (n: number) => {
-    let h = n * 0x45d9f3b;
-    h = ((h >> 16) ^ h) * 0x45d9f3b;
-    h = ((h >> 16) ^ h) * 0x45d9f3b;
-    return (h >>> 0) / 0xffffffff;
-  };
-
-  const x = hash1(seed + 1) * 100;
-  const y = hash2(seed + 100) * 100;
-  const size = (seed % 3) + 1;
+function Cloud({
+  className = "",
+  duration,
+  opacity,
+}: {
+  className?: string;
+  duration: string;
+  opacity: number;
+}) {
   return (
-    <div
-      className="absolute"
-      style={{
-        left: `${x}%`,
-        top: `${y}%`,
-        width: size * 2,
-        height: size * 2,
-        background: "#ffffff",
-        opacity: 0.7 + (seed % 3) * 0.1,
-        boxShadow: "0 0 4px rgba(255,255,255,0.8)",
-      }}
-    />
+    <div className={`absolute ${className}`} style={{ animation: `pixel-driftx ${duration} ease-in-out infinite alternate` }}>
+      <div
+        style={{
+          width: 80,
+          height: 24,
+          background: "#ffffff",
+          boxShadow: `0 -10px 0 0 rgba(255,255,255,${opacity}), 20px -16px 0 0 rgba(255,255,255,${opacity}), 40px -10px 0 0 rgba(255,255,255,${opacity})`,
+          opacity,
+        }}
+      />
+    </div>
   );
 }

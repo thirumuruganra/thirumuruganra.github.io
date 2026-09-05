@@ -52,7 +52,7 @@ export function ProjectDetail({ repo, onBack }: Props) {
       {onBack && (
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 pixel-border-2 pixel-shadow-sm px-2 py-1 bg-pixel-window hover:bg-pixel-titlebar text-sm"
+          className="inline-flex items-center gap-2 pixel-border-2 rounded-full px-2 py-1 bg-pixel-window hover:bg-pixel-titlebar text-sm"
         >
           <ArrowLeftIcon className="w-4 h-4" />
           Back to Projects
@@ -65,7 +65,7 @@ export function ProjectDetail({ repo, onBack }: Props) {
           <h2 className="font-display text-sm sm:text-base break-words">{repo.name}</h2>
           <div className="flex flex-wrap items-center gap-2 mt-2 text-sm">
             {repo.language && (
-              <span className="pixel-border-2 px-2 py-0.5 bg-pixel-titlebar">{repo.language}</span>
+              <span className="pixel-border-2 rounded-full px-2 py-0.5 bg-pixel-titlebar">{repo.language}</span>
             )}
             <span className="inline-flex items-center gap-1">
               <StarIcon className="w-4 h-4" /> {repo.stars}
@@ -78,7 +78,7 @@ export function ProjectDetail({ repo, onBack }: Props) {
       </div>
 
       {repo.description && (
-        <p className="text-lg leading-snug pixel-border-2 pixel-shadow-sm p-3 bg-pixel-window">
+        <p className="text-lg leading-snug pixel-border-2 rounded-[12px] p-3 bg-pixel-window">
           {repo.description}
         </p>
       )}
@@ -87,7 +87,7 @@ export function ProjectDetail({ repo, onBack }: Props) {
         href={repo.html_url}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex items-center gap-2 pixel-border pixel-shadow px-4 py-3 bg-pixel-accent text-black font-display text-[11px] hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"
+        className="inline-flex items-center gap-2 pixel-border rounded-full px-4 py-3 bg-pixel-accent text-black font-display text-[11px] hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"
       >
         Open on GitHub
         <ExternalIcon className="w-4 h-4" />
@@ -95,7 +95,7 @@ export function ProjectDetail({ repo, onBack }: Props) {
 
       <div>
         <h3 className="font-display text-[10px] mb-2">// README</h3>
-        <div className="pixel-border-2 pixel-shadow-sm p-4 bg-pixel-window min-h-[100px] text-base break-words readme-md">
+        <div className="pixel-border-2 rounded-[12px] p-4 bg-pixel-window min-h-[100px] text-base break-words readme-md">
           {loading && <span className="animate-pulse">Loading README…</span>}
           {!loading && !readme && (
             <span className="text-pixel-muted">No README found for this repo.</span>

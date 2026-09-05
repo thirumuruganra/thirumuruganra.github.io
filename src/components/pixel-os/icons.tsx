@@ -18,3 +18,6 @@ export { GitBranch as ForkIcon } from "pixelarticons/react/GitBranch";
 export { Search as SearchIcon } from "pixelarticons/react/Search";
 export { Bell as BellIcon } from "pixelarticons/react/Bell";
 export { Signal as SignalIcon } from "pixelarticons/react/Signal";
+export { CheckDouble as CheckDoubleIcon } from "pixelarticons/react/CheckDouble";
+export { BookOpen as BookOpenIcon } from "pixelarticons/react/BookOpen";
+export { Music as MusicIcon } from "pixelarticons/react/Music";

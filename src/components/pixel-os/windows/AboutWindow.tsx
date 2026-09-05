@@ -9,7 +9,7 @@ const arsenal: Array<[string, string]> = [
 export function AboutWindow() {
   return (
     <div className="space-y-5">
-      <h2 className="font-display text-base">Profile.app</h2>
+      <h2 className="font-display text-base">Profile</h2>
       <p className="leading-snug text-lg">
         Hi, I'm Thirumurugan — an enthusiastic and detail-oriented Computer Science student with a
         solid foundation in software development and web technologies. Ranked in the top 3% of my
@@ -20,7 +20,7 @@ export function AboutWindow() {
         {tags.map((t) => (
           <span
             key={t}
-            className="pixel-border-2 pixel-shadow-sm px-2 py-1 text-sm bg-pixel-titlebar"
+            className="pixel-border-2 rounded-full px-2 py-1 text-sm bg-pixel-titlebar"
           >
             [{t}]
           </span>
@@ -32,7 +32,7 @@ export function AboutWindow() {
           {arsenal.map(([k, v]) => (
             <li
               key={k}
-              className="pixel-border-2 pixel-shadow-sm p-2 bg-pixel-window flex flex-col sm:flex-row sm:gap-3"
+              className="pixel-border-2 rounded-[12px] p-2 bg-pixel-window flex flex-col sm:flex-row sm:gap-3"
             >
               <span className="font-display text-[10px] sm:w-32 text-pixel-accent">{k}</span>
               <span className="text-lg">{v}</span>

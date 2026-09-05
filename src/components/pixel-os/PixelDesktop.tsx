@@ -1,17 +1,21 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Backdrop } from "./Backdrop";
+import { BioCard } from "./BioCard";
+import { CurrentlyCard } from "./CurrentlyCard";
 import { Dock } from "./Dock";
 import { MenuBar } from "./MenuBar";
-import { StickyNote } from "./StickyNote";
+import { PortraitCard } from "./PortraitCard";
+import { WeatherCard } from "./WeatherCard";
 import { PixelWindow, type WindowState } from "./Window";
 import { AboutWindow } from "./windows/AboutWindow";
 import { ContactWindow } from "./windows/ContactWindow";
 import { ResumeWindow } from "./windows/ResumeWindow";
 import { WorkWindow } from "./windows/WorkWindow";
 
-export type WindowId = "work" | "about" | "contact" | "resume";
+export type WindowId = "vanakkam" | "work" | "about" | "contact" | "resume";
 
 const initial: Record<WindowId, WindowState> = {
+  vanakkam: { open: true, minimized: false, maximized: false, z: 2 },
   work: { open: false, minimized: false, maximized: false, z: 1 },
   about: { open: false, minimized: false, maximized: false, z: 1 },
   contact: { open: false, minimized: false, maximized: false, z: 1 },
@@ -19,9 +23,10 @@ const initial: Record<WindowId, WindowState> = {
 };
 
 const titles: Record<WindowId, string> = {
+  vanakkam: "Vanakkam",
   work: "Work — Finder",
-  about: "About — Profile.app",
-  contact: "Contact — Mail.app",
+  about: "About — Profile",
+  contact: "Contact — Mail",
   resume: "Resume.pdf — Preview",
 };
 
@@ -79,30 +84,15 @@ export function PixelDesktop() {
   const maximize = useCallback((id: WindowId) => {
     setWindows((w) => ({ ...w, [id]: { ...w[id], maximized: !w[id].maximized } }));
   }, []);
-  const minimizeAll = useCallback(() => {
-    setWindows((w) => {
-      const next = { ...w };
-      (Object.keys(next) as WindowId[]).forEach((k) => {
-        next[k] = { ...next[k], minimized: true };
-      });
-      return next;
-    });
-  }, []);
-
   const initials = useMemo(() => {
     const baseX = typeof window !== "undefined" ? Math.max(40, window.innerWidth / 2 - 360) : 80;
     return {
+      vanakkam: { x: baseX + 20, y: 72 },
       work: { x: baseX, y: 80 },
       about: { x: baseX + 40, y: 120 },
       contact: { x: baseX + 80, y: 160 },
       resume: { x: baseX + 120, y: 100 },
     };
-  }, []);
-
-  const stickyInitial = useMemo(() => {
-    if (typeof window === "undefined") return { x: 40, y: 80 };
-    const isMobile = window.innerWidth < 768;
-    return isMobile ? { x: 16, y: 60 } : { x: 40, y: 80 };
   }, []);
 
   return (
@@ -112,7 +102,23 @@ export function PixelDesktop() {
         theme={theme}
         toggleTheme={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
       />
-      <StickyNote initial={stickyInitial} />
+      <PortraitCard />
+      <WeatherCard />
+      <CurrentlyCard />
+
+      <PixelWindow
+        title={titles.vanakkam}
+        state={windows.vanakkam}
+        onClose={() => close("vanakkam")}
+        onMinimize={() => minimize("vanakkam")}
+        onMaximize={() => maximize("vanakkam")}
+        onFocus={() => focus("vanakkam")}
+        initial={initials.vanakkam}
+        width={660}
+        height={470}
+      >
+        <BioCard />
+      </PixelWindow>
 
       <PixelWindow
         title={titles.work}
@@ -159,7 +165,7 @@ export function PixelDesktop() {
         <ResumeWindow />
       </PixelWindow>
 
-      <Dock onOpen={open} onHome={minimizeAll} />
+      <Dock onOpen={open} onHome={() => open("vanakkam")} />
     </div>
   );
 }
