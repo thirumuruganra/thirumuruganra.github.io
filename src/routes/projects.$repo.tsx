@@ -1,6 +1,10 @@
+import { lazy, Suspense } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ProjectDetail } from "@/components/pixel-os/windows/ProjectDetail";
 import { usePinnedRepos } from "@/components/pixel-os/hooks/usePinnedRepos";
+
+const ProjectDetail = lazy(() =>
+  import("@/components/pixel-os/windows/ProjectDetail").then((m) => ({ default: m.ProjectDetail })),
+);
 
 export const Route = createFileRoute("/projects/$repo")({
   head: ({ params }) => ({
@@ -45,7 +49,9 @@ function ProjectRoute() {
           {loading && !found ? (
             <div className="font-display text-xs animate-pulse">Loading…</div>
           ) : (
-            <ProjectDetail repo={found ?? fallback} />
+            <Suspense fallback={<div className="font-display text-xs animate-pulse">Loading…</div>}>
+              <ProjectDetail repo={found ?? fallback} />
+            </Suspense>
           )}
         </div>
       </div>

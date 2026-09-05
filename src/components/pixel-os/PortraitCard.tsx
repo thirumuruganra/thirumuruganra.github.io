@@ -17,6 +17,10 @@ export function PortraitCard() {
         <img
           src="/portrait.webp"
           alt="Thirumurugan"
+          width={186}
+          height={186}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover block"
           style={{ filter: "saturate(.82) contrast(.94) sepia(.12)" }}
         />

@@ -1,7 +1,6 @@
-// Map repo name (case-insensitive) -> { emoji or image URL, category subtitle }
-// Examples:
-//   "my-cool-repo": { icon: "🚀", category: "Website Design" },
-//   "portfolio":    { icon: "/icons/portfolio.png", category: "Web App" },
+// Map lowercase repo name -> { image URL, category subtitle }
+// Example:
+//   "portfolio": { icon: "/icons/portfolio.png", category: "Web App" },
 
 export type RepoMeta = { icon?: string; category?: string };
 

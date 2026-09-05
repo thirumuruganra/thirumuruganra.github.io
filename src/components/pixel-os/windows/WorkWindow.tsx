@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { FolderIcon } from "../icons";
 import { usePinnedRepos, type Repo } from "../hooks/usePinnedRepos";
 import { getRepoCategory, getRepoMeta } from "../repoIcons";
-import { ProjectDetail } from "./ProjectDetail";
+
+// Split out react-markdown/remark-gfm (~40kB gzip) so it loads only when a project is opened.
+const ProjectDetail = lazy(() =>
+  import("./ProjectDetail").then((m) => ({ default: m.ProjectDetail })),
+);
 
 function RepoIcon({ name }: { name: string }) {
   const icon = getRepoMeta(name).icon;
@@ -13,6 +17,10 @@ function RepoIcon({ name }: { name: string }) {
       <img
         src={icon}
         alt=""
+        width={40}
+        height={40}
+        loading="lazy"
+        decoding="async"
         className={`w-full h-full block object-cover ${rounded ? "rounded-[8px]" : ""}`}
         style={{ imageRendering: "pixelated" }}
       />
@@ -25,7 +33,13 @@ export function WorkWindow() {
   const [selected, setSelected] = useState<Repo | null>(null);
 
   if (selected) {
-    return <ProjectDetail repo={selected} onBack={() => setSelected(null)} />;
+    return (
+      <Suspense
+        fallback={<div className="text-pixel-accent font-display text-sm animate-pulse">Loading…</div>}
+      >
+        <ProjectDetail repo={selected} onBack={() => setSelected(null)} />
+      </Suspense>
+    );
   }
 
   return (

@@ -45,7 +45,7 @@ export function BootSequence({ onDone }: { onDone: () => void }) {
       }`}
     >
       <img
-        src="/favicon.png"
+        src="/favicon.ico"
         alt=""
         width={72}
         height={72}
