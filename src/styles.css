@@ -371,6 +371,40 @@
   animation: pixel-celestial-x 1500ms cubic-bezier(0.55, 0, 0.7, 0.2) both;
   will-change: transform;
 }
+
+/* Boot sequence */
+@keyframes pixel-boot-bar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes pixel-crt-off {
+  0% {
+    transform: scaleY(1);
+    filter: brightness(1);
+    opacity: 1;
+  }
+  70% {
+    transform: scaleY(0.006);
+    filter: brightness(3.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0.006);
+    filter: brightness(3.5);
+    opacity: 0;
+  }
+}
+.anim-boot-bar {
+  animation: pixel-boot-bar 1100ms steps(12, end) both;
+}
+.anim-crt-off {
+  animation: pixel-crt-off 260ms var(--ease-out-expo) forwards;
+  will-change: transform, opacity, filter;
+}
 .anim-celestial-y {
   animation: pixel-celestial-y 1500ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
   will-change: transform, opacity;

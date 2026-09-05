@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Backdrop } from "./Backdrop";
+import { BootSequence } from "./BootSequence";
 import { BioCard } from "./BioCard";
 import { CurrentlyCard } from "./CurrentlyCard";
 import { Dock } from "./Dock";
@@ -37,14 +38,22 @@ function getInitialTheme(): "light" | "dark" {
   return "light";
 }
 
+function shouldSkipBoot(): boolean {
+  if (typeof window === "undefined") return true;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 export function PixelDesktop() {
   const [windows, setWindows] = useState(initial);
   const [zTop, setZTop] = useState(10);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [booted, setBooted] = useState<boolean>(() => shouldSkipBoot());
 
   useEffect(() => {
     setTheme(getInitialTheme());
   }, []);
+
+  const finishBoot = useCallback(() => setBooted(true), []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -97,6 +106,7 @@ export function PixelDesktop() {
 
   return (
     <div className="relative z-10 w-screen h-screen overflow-hidden text-foreground">
+      {!booted && <BootSequence onDone={finishBoot} />}
       <Backdrop />
       <MenuBar
         theme={theme}
