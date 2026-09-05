@@ -16,21 +16,32 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Fetch pinned repos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -sf "https://pinned.berrysauce.dev/get/thirumuruganra" \
-            | node -e "
-              const d = JSON.parse(require('fs').readFileSync(0));
-              if (!Array.isArray(d) || !d.length) process.exit(1);
-              const out = d.map(r => ({
-                name: r.name,
-                description: r.description ?? '',
-                language: r.language ?? null,
-                link: r.link ?? 'https://github.com/thirumuruganra/' + r.name,
-                stars: r.stars ?? 0,
-                forks: r.forks ?? 0,
-              }));
-              require('fs').writeFileSync('public/repos.json', JSON.stringify(out, null, 2) + '\n');
-            "
+          gh api graphql -f query='
+            { user(login: "thirumuruganra") {
+                pinnedItems(first: 6, types: REPOSITORY) {
+                  nodes { ... on Repository {
+                    name
+                    description
+                    primaryLanguage { name }
+                    url
+                    stargazerCount
+                    forkCount
+                  } }
+                }
+            } }' \
+            --jq '[.data.user.pinnedItems.nodes[] | {
+              name,
+              description: (.description // ""),
+              language: (.primaryLanguage.name // null),
+              link: .url,
+              stars: .stargazerCount,
+              forks: .forkCount
+            }]' > repos.tmp
+          node -e "const d=JSON.parse(require('fs').readFileSync('repos.tmp'));if(!Array.isArray(d)||!d.length)process.exit(1)"
+          mv repos.tmp public/repos.json
 
       - name: Commit if changed
         run: |
