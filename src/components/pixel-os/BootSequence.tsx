@@ -27,10 +27,12 @@ export function BootSequence({ onDone }: { onDone: () => void }) {
       if (e.key === "Escape") finish();
     };
     window.addEventListener("keydown", skip);
+    window.addEventListener("pointerdown", finish);
     return () => {
       stepTimers.forEach(clearTimeout);
       clearTimeout(endTimer);
       window.removeEventListener("keydown", skip);
+      window.removeEventListener("pointerdown", finish);
     };
   }, [onDone]);
 
@@ -58,7 +60,7 @@ export function BootSequence({ onDone }: { onDone: () => void }) {
         </p>
       </div>
       <p className="absolute bottom-8 font-pixel text-[10px] text-[color:var(--pixel-muted)] opacity-60">
-        press esc to skip
+        tap or press esc to skip
       </p>
     </div>
   );
