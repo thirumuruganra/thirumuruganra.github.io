@@ -1,5 +1,25 @@
 import { useEffect, useState } from "react";
 
+function SunHorizon({ dir }: { dir: "rise" | "set" }) {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      shapeRendering="crispEdges"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <path d="M3 17h18" />
+      <path d="M8 17a4 4 0 0 1 8 0z" fill="currentColor" stroke="none" />
+      {dir === "rise" ? <path d="M12 13V8M9 11l3-3 3 3" /> : <path d="M12 17v5M9 19l3 3 3-3" />}
+    </svg>
+  );
+}
+
 export function WeatherCard() {
   const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
@@ -9,12 +29,13 @@ export function WeatherCard() {
   }, []);
 
   const fmt = (opts: Intl.DateTimeFormatOptions) =>
-    now
-      ? new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", ...opts }).format(now)
-      : "";
+    now ? new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", ...opts }).format(now) : "";
 
   return (
-    <div className="hidden lg:block fixed z-[1] right-11 top-[220px] w-[246px] p-4 bg-pixel-window pixel-border rounded-[16px] anim-pop-in" style={{ animationDelay: "100ms" }}>
+    <div
+      className="hidden lg:block fixed z-[1] right-11 top-[220px] w-[246px] p-4 bg-pixel-window pixel-border rounded-[16px] anim-pop-in"
+      style={{ animationDelay: "100ms" }}
+    >
       <div className="flex items-baseline justify-between">
         <div className="font-display text-sm tracking-wider text-pixel-muted">CHENNAI, IN</div>
         <div className="text-xs text-pixel-muted">GMT+5:30</div>
@@ -36,9 +57,13 @@ export function WeatherCard() {
         </div>
       </div>
       <div className="h-[2px] bg-black/10 dark:bg-white/10 my-3 rounded-full" />
-      <div className="flex justify-between text-xs text-pixel-muted">
-        <span>↑ 06:04</span>
-        <span>↓ 18:22</span>
+      <div className="flex items-center justify-between text-xs text-pixel-muted">
+        <span className="flex items-center gap-1">
+          <SunHorizon dir="rise" /> 06:04
+        </span>
+        <span className="flex items-center gap-1">
+          <SunHorizon dir="set" /> 18:22
+        </span>
         <span>{fmt({ weekday: "short", month: "short", day: "numeric" })}</span>
       </div>
     </div>
